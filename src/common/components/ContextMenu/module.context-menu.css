@@ -1,0 +1,39 @@
+.menu {
+  font-size: 14px;
+  background-color: var(--color-dark);
+  color: #c8d8ee;
+  border-radius: 10px;
+  padding: 10px;
+  width: 150px;
+  height: auto;
+  margin: 0;
+  position: absolute;
+  list-style: none;
+  box-shadow: 0 0 10px 0 #030a10;
+  z-index: 100000000;
+}
+
+.menu__item {
+  padding: 0.5em 1em;
+  color: #c8d8ee;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.menu__item:hover {
+  color: #fff;
+}
+
+.menu__icon {
+  margin-right: 8px;
+  height: 20px;
+  filter: invert(88%) sepia(13%) saturate(698%) hue-rotate(186deg)
+    brightness(98%) contrast(91%);
+}
+
+.divider-hr {
+  border-bottom: 3px solid #131821;
+  margin: 10px 0;
+  border-radius: 50px;
+}

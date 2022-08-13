@@ -1,0 +1,63 @@
+.header-ladder {
+  background: url(../../../../public/assets/img/header.png) center center /
+    cover no-repeat;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 45px;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 19px;
+}
+.h1-header {
+  font-weight: 700;
+  font-size: 40px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.h1-header img {
+  width: 32px;
+  margin-right: 17px;
+  pointer-events: none;
+}
+.p-header {
+  margin: 7px 0px 15px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  max-width: 620px;
+  color: rgb(122, 134, 151);
+}
+.buttons-div {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.btn-gold {
+  background: rgba(166, 133, 115, 0.1);
+  border-radius: 8px;
+  padding: 0px 14px;
+  font-weight: 500;
+  height: 42px;
+  font-size: 14px;
+  color: rgb(235, 182, 103);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+  border: none;
+}
+.ml {
+  margin-left: 8px;
+}
+.btn-gold img {
+  width: 15px;
+  margin-right: 10px;
+  pointer-events: none;
+}
+.btn-gold:hover {
+  background: rgba(166, 133, 115, 0.25);
+}

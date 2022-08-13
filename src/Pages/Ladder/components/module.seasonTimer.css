@@ -1,0 +1,44 @@
+.head__timer {
+  height: 54px;
+  width: 100%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  border-radius: 6px;
+}
+
+.head__timer > span {
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgb(96, 128, 255);
+}
+.timer-card {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgb(96, 128, 255);
+  padding-left: 50px;
+  height: 100%;
+  min-width: 230px;
+}
+.timer-card > img {
+  width: 20px;
+  margin-right: 8px;
+  pointer-events: none;
+}
+.timer {
+  display: flex;
+}
+
+.timer > p {
+  margin-right: 10px;
+}

@@ -1,0 +1,30 @@
+.modal {
+  z-index: 1000000;
+}
+.close {
+  cursor: pointer;
+}
+
+.dropdown-test {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-chats-content {
+  transform: translateX(2000px);
+  top: 100px;
+  position: absolute;
+  z-index: 1;
+  background: #0b1118;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.show {
+  display: block;
+  transition: opacity 400ms ease 0s;
+}
+.showChats {
+  transform: translateX(-185px);
+  transition: all 0.4s ease 0s;
+}

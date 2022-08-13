@@ -1,0 +1,35 @@
+.div--selects {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-left: 5px;
+}
+.div--selects h3 {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 24px;
+  color: rgb(200, 216, 238);
+  text-transform: none;
+}
+.div--selects img {
+  width: 32px;
+  margin-right: 6px;
+  pointer-events: none;
+}
+.div--selects div {
+  margin-left: 25px;
+  display: flex;
+  height: 46px;
+  padding: 4px;
+  background: rgb(31, 38, 55);
+  border-radius: 8px;
+}
+
+select {
+  background: #1f2637;
+  color: #fff;
+  border: none;
+}

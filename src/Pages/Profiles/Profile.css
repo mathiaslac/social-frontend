@@ -1,0 +1,11 @@
+.stats__tabs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.tab {
+  margin-right: 30px;
+  cursor: pointer;
+}

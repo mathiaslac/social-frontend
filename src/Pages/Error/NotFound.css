@@ -1,0 +1,45 @@
+.error--page {
+  height: calc(100vh - 60px);
+  background: url(//cloud.cybershoke.net/img/404-bg.png) center center / cover
+    no-repeat;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Roboto;
+}
+.qaq {
+  font-weight: 900;
+  font-size: 200px;
+  line-height: 234px;
+  letter-spacing: 0.02em;
+  color: rgb(241, 243, 255);
+  opacity: 0.5;
+}
+.not--found {
+  margin-bottom: 18px;
+  font-weight: 900;
+  font-size: 45px;
+  letter-spacing: 0.02em;
+  color: rgb(241, 243, 255);
+}
+.notfound--text {
+  text-align: center;
+  font-size: 18px;
+  line-height: 29px;
+  color: rgb(175, 183, 198);
+  width: 430px;
+}
+.notfound--btn {
+  background: rgb(96, 128, 255);
+  border-radius: 7px;
+  padding: 18px 83px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 37px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}

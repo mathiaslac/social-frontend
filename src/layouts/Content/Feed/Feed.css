@@ -1,0 +1,89 @@
+aside {
+  max-width: 36%;
+}
+
+.card {
+  padding: 16px;
+  background-color: var(--color-dark);
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.premium {
+  color: var(--color-gold);
+}
+
+.upgrade__btn {
+  background: var(--color-fade-gold);
+  border-radius: 10px;
+  color: var(--color-gold);
+  padding: 5px 15px 5px 15px;
+}
+.upgrade__btn:hover {
+  background: var(--color-gold-hover);
+}
+.card__title {
+  padding-bottom: 10px;
+}
+.sub__card {
+  padding: 16px;
+  background-color: var(--color-light);
+  border-radius: 12px;
+}
+
+.offline {
+  color: var(--color-grey);
+}
+.online {
+  color: var(--color-green);
+}
+
+.off__dot {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 100%;
+  background-color: var(--color-grey);
+  width: 8px;
+  height: 8px;
+}
+.on__dot {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 100%;
+  background-color: var(--color-green);
+  width: 8px;
+  height: 8px;
+}
+
+.sugg__friends {
+  display: flex;
+  align-items: center;
+  padding: 7px 0 7px 0;
+}
+
+.infos__friends {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.action__friends {
+  display: flex;
+  margin-left: 120px;
+}
+.nick {
+  font-weight: 700;
+}
+.count__friends {
+  font-size: 11px;
+  color: var(--color-grey);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add__friends {
+  display: flex;
+  justify-content: center;
+}
