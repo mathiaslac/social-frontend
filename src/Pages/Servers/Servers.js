@@ -156,47 +156,47 @@ const Servers = () => {
     Math.round(CompRaw.numplayers * 100) / compServer.maxplayers;
 
   const retakeCountClass = () => {
-    if (RetakeRaw.numplayers <= 10) {
+    if (RetakeRaw.numplayers <= 4) {
       document.getElementById("retakeProg").classList.add("green");
-    } else if (RetakeRaw.numplayers <= 20) {
+    } else if (RetakeRaw.numplayers <= 7) {
       document.getElementById("retakeProg").classList.add("orange");
-    } else if (RetakeRaw.numplayers <= 25) {
+    } else if (RetakeRaw.numplayers <= 10) {
       document.getElementById("retakeProg").classList.add("red");
     }
   };
   const bhopCountClass = () => {
-    if (BhopRaw.numplayers <= 10) {
+    if (BhopRaw.numplayers <= 6) {
       document.getElementById("bhopProg").classList.add("green");
-    } else if (BhopRaw.numplayers <= 20) {
+    } else if (BhopRaw.numplayers <= 14) {
       document.getElementById("bhopProg").classList.add("orange");
-    } else if (BhopRaw.numplayers <= 25) {
+    } else if (BhopRaw.numplayers <= 18) {
       document.getElementById("bhopProg").classList.add("red");
     }
   };
   const hnsCountClass = () => {
-    if (HnsRaw.numplayers <= 10) {
+    if (HnsRaw.numplayers <= 6) {
       document.getElementById("hnsProg").classList.add("green");
-    } else if (HnsRaw.numplayers <= 20) {
+    } else if (HnsRaw.numplayers <= 12) {
       document.getElementById("hnsProg").classList.add("orange");
-    } else if (HnsRaw.numplayers <= 25) {
+    } else if (HnsRaw.numplayers <= 16) {
       document.getElementById("hnsProg").classList.add("red");
     }
   };
   const dmCountClass = () => {
-    if (DmRaw.numplayers <= 10) {
+    if (DmRaw.numplayers <= 6) {
       document.getElementById("dmProg").classList.add("green");
-    } else if (DmRaw.numplayers <= 20) {
+    } else if (DmRaw.numplayers <= 12) {
       document.getElementById("dmProg").classList.add("orange");
-    } else if (DmRaw.numplayers <= 25) {
+    } else if (DmRaw.numplayers <= 16) {
       document.getElementById("dmProg").classList.add("red");
     }
   };
   const compCountClass = () => {
-    if (CompRaw.numplayers <= 10) {
+    if (CompRaw.numplayers <= 5) {
       document.getElementById("compProg").classList.add("green");
-    } else if (CompRaw.numplayers <= 20) {
+    } else if (CompRaw.numplayers <= 9) {
       document.getElementById("compProg").classList.add("orange");
-    } else if (CompRaw.numplayers <= 25) {
+    } else if (CompRaw.numplayers <= 13) {
       document.getElementById("compProg").classList.add("red");
     }
   };
@@ -378,7 +378,7 @@ const Servers = () => {
             <span>{retakeServer.name}</span>
           </div>
           <div className="server-row__online">
-            <div classname="online">
+            <div className="online">
               <div
                 id="retakeProg"
                 className="players block-servers-players-status"
@@ -523,7 +523,7 @@ const Servers = () => {
             <span>{bhopServer.name}</span>
           </div>
           <div className="server-row__online">
-            <div classname="online">
+            <div className="online">
               <div
                 id="bhopProg"
                 className="players block-servers-players-status"
@@ -657,7 +657,7 @@ const Servers = () => {
             <span>{hnsServer.name}</span>
           </div>
           <div className="server-row__online">
-            <div classname="online">
+            <div className="online">
               <div
                 id="hnsProg"
                 className="players block-servers-players-status"
@@ -787,7 +787,7 @@ const Servers = () => {
             <span>{dmServer.name}</span>
           </div>
           <div className="server-row__online">
-            <div classname="online">
+            <div className="online">
               <div
                 id="dmProg"
                 className="players block-servers-players-status"
@@ -913,7 +913,7 @@ const Servers = () => {
             <span>{compServer.name}</span>
           </div>
           <div className="server-row__online">
-            <div classname="online">
+            <div className="online">
               <div
                 id="compProg"
                 className="players block-servers-players-status"

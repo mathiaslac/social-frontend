@@ -43,13 +43,6 @@
   color: #adbcd0;
   font-family: Roboto;
 }
-.server-row > div,
-.server-row span {
-  font-weight: 500;
-  font-size: 14px;
-  color: #adbcd0;
-  font-family: Roboto;
-}
 .server-row .online {
   background: rgba(0, 0, 0, 0.3);
 }
