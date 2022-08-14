@@ -124,7 +124,11 @@ const Top = () => {
                   </td>
                   <td className="center">{player.kills}</td>
                   <td className="center">{player.deaths}</td>
-                  <td className="center"></td>
+                  <td className="center">
+                    {(Math.round((player.kills / player.deaths) * 100) / 100)
+                      .toFixed(2)
+                      .replace(".", ",")}
+                  </td>
                   <td className="img-mlt pointer">
                     <img
                       className="rank-img"

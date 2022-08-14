@@ -24,16 +24,14 @@ const Modal = (props) => {
       timeout={{ enter: 0, exit: 300 }}
     >
       <div className="modal" onClick={props.onClose}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-header">
-            <h4 className="modal-title">{props.title}</h4>
-          </div>
-          <div className="modal-body">{props.children}</div>
-          <div className="modal-footer">
-            <button onClick={props.onClose} className="button">
-              Close
-            </button>
-          </div>
+        <div onClick={(e) => e.stopPropagation()}>
+          <img
+            src="assets/img/svg/servers/close-modal.svg"
+            onClick={props.onClose}
+            className="modal-close pointer"
+            alt="modal-close"
+          />
+          <div>{props.children}</div>
         </div>
       </div>
     </CSSTransition>,

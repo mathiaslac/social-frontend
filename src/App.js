@@ -12,7 +12,7 @@ import { NotFound, Profiles } from "./Pages/index";
 const Landing = lazy(() => import("./Pages/Landing/Landing"));
 const Shop = lazy(() => import("./Pages/Shop/Shop"));
 const Home = lazy(() => import("./Pages/Home/Home"));
-const Groups = lazy(() => import("./Pages/Groups/Groups"));
+const Servers = lazy(() => import("./Pages/Servers/Servers"));
 const Events = lazy(() => import("./Pages/Events/Events"));
 const Ladder = lazy(() => import("./Pages/Ladder/Ladder"));
 
@@ -47,10 +47,10 @@ const App = () => {
               }
             />
             <Route
-              path="groups"
+              path="servers"
               element={
                 <Suspense fallback={null}>
-                  <Groups />
+                  <Servers />
                 </Suspense>
               }
             />

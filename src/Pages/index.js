@@ -2,7 +2,7 @@ export { default as Ads } from "./Ads/Ads";
 export { default as Blogs } from "./Blogs/Blogs";
 export { default as NotFound } from "./Error/NotFound";
 export { default as Events } from "./Events/Events";
-export { default as Groups } from "./Groups/Groups";
+export { default as Servers } from "./Servers/Servers";
 export { default as Home } from "./Home/Home";
 export { default as Jobs } from "./Jobs/Jobs";
 export { default as Ladder } from "./Ladder/Ladder";

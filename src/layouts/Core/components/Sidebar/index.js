@@ -3,7 +3,7 @@ import React from "react";
 
 import { NavLink, Link } from "react-router-dom";
 
-import { EventsSvg, FeedSvg, GroupsSvg, RankingSvg } from "./Svg";
+import { EventsSvg, FeedSvg, ServersSvg, RankingSvg } from "./Svg";
 
 const sidebar = () => {
   return (
@@ -19,13 +19,13 @@ const sidebar = () => {
           <span>News Feed</span>
         </NavLink>
         <NavLink
-          to="/groups"
+          to="/servers"
           className={({ isActive }) =>
             `btn btn-mat valign ${isActive ? "active" : ""}`
           }
         >
-          <GroupsSvg />
-          <span>Groups</span>
+          <ServersSvg />
+          <span>Servers</span>
         </NavLink>
         <NavLink
           to="/events"
