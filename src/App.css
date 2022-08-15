@@ -995,7 +995,7 @@ main {
     rgba(51, 43, 44, 0.3) 80.47%,
     rgba(119, 78, 55, 0.3) 100%
   );
-  --color-dark: #0b1118;
+  --color-dark: #232633;
   --color-light: #151b26;
   --color-mid: #1d1d42;
   --color-gold: rgb(235, 182, 103);
@@ -1040,7 +1040,7 @@ main {
   --main-link: #743cfd;
   --main-btn: rgba(166, 133, 115, 0.1);
   --body-font-family: "Roboto", sans-serif;
-  --body-bg-color-dark: #0f141b;
+  --body-bg-color-dark: #1b1e29;
   --body-color: #212529;
   --body-color-dark: #dcdcdc;
   --shop-gradient: linear-gradient(#212533 -12.18%, #171c26 103.8%), #111820;
@@ -1135,4 +1135,15 @@ main {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+}
+
+.blue-scroll::-webkit-scrollbar-thumb {
+  background: #6080ff;
+  border-radius: 10px;
+  height: 32px;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+.blue-scroll::-webkit-scrollbar {
+  width: 2px;
+  background: #17202c;
 }

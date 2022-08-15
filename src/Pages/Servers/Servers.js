@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Modal from "../../components/posts/AddPost/Modal/Modal";
 
+import Discord from "./Discord";
+
 import "./module.servers.css";
 import axios from "axios";
 
@@ -74,6 +76,7 @@ const Servers = () => {
       setAwpBots(AwpBots);
     });
   };
+
   const getRetakeServer = () => {
     axios.get("http://localhost:5000/api/servers/retake").then((response) => {
       const retakeServers = response.data.info;
@@ -1037,6 +1040,7 @@ const Servers = () => {
             </div>
           </div>
         </Modal>
+        <Discord />
       </div>
     </Fragment>
   );

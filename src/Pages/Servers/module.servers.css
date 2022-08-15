@@ -28,6 +28,18 @@
   background: linear-gradient(270deg, #11171f 84.7%, rgba(17, 23, 31, 0) 157%);
   z-index: 1;
 }
+.discord-status {
+  height: 12px;
+  width: 12px;
+  margin-right: 10px;
+}
+#serverInfoModal .table .avatar {
+  vertical-align: middle;
+  height: 23px;
+  width: 23px;
+  background: linear-gradient(0deg, #3b4851 51%, #252d30 88%);
+  border-radius: 100%;
+}
 .server-row__bg {
   position: absolute;
   top: 50%;
@@ -196,6 +208,8 @@ thead tr {
 .table-players-server-body {
   display: grid;
   height: 224px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .table-grid {
   width: 100%;
