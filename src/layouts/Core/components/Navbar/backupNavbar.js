@@ -1,5 +1,6 @@
 import "./navbar.css";
 import "./module.modal-chat.css";
+import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -64,7 +65,23 @@ window.onclick = function (event) {
 };
 
 const Navbar = (props) => {
-  return (
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/verify", {
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((b) => {
+        if (b.success) {
+          setUser(b.user);
+        }
+      });
+  }, []);
+  return user ? (
     <header style={{ gridArea: "header" }}>
       <div className="main-header">
         <div className="navbar nvabar_top">
@@ -145,7 +162,7 @@ const Navbar = (props) => {
             </div>
           </div>
 
-          <div className="user-menu dropdown main_usr_ddmenu">
+          <div className="user-menu dropdown main_usr_ddmenu" user={user}>
             <Link to="/76561198184313278">
               <button
                 onClick={() =>
@@ -153,10 +170,53 @@ const Navbar = (props) => {
                 }
                 className="hdr_droptoggle hdr_user_droptoggle"
               >
-                <img src="assets/img/steamUser.png" alt="Avatar" />
-                <span>Snooze</span>
+                <img src={props.user.avatar.large} alt="Avatar" />
+                <span>{props.user.username}</span>
               </button>
             </Link>
+          </div>
+        </div>
+      </div>
+    </header>
+  ) : (
+    <header style={{ gridArea: "header" }}>
+      <div className="main-header">
+        <div className="navbar nvabar_top">
+          <div className="container-fluid">
+            <div className="valign header">
+              <button className="toggle_sidebar">
+                <MenuSvg />
+              </button>
+              <Link className="logo-wrapper" to="/home">
+                <img className="logo_pc md-block" src="" alt="logo" />
+              </Link>
+              <div className="search-wrapper">
+                <button type="button" className="toggle_search">
+                  <SearchSvg />
+                </button>
+                <form>
+                  <input
+                    id="search-input"
+                    className="form-control"
+                    type="search"
+                    placeholder="Find someone..."
+                    autoComplete="off"
+                  />
+                  <LoopSvg />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="valign navbar_top_right">
+          <div className="user-menu dropdown main_usr_ddmenu">
+            <button
+              onClick={() =>
+                (window.location.href = "http://localhost:5000/authenticate")
+              }
+            >
+              Login with Steam
+            </button>
           </div>
         </div>
       </div>

@@ -1,10 +1,7 @@
 import React, { Fragment } from "react";
 import { Helmet } from "react-helmet";
-
-import { Top } from "./components/index";
 import RightFeed from "./layout";
-import SeasonsSelect from "./components/SeasonsSelect";
-import HeaderLadder from "./components/HeaderLadder";
+import { Top, HeaderLadder, SeasonsSelect } from "./components";
 
 import "./module.ladder.css";
 

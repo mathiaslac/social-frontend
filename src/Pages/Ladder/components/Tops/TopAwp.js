@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 
-import "./module.top.css";
+import "../module.top.css";
 import { motion } from "framer-motion";
 
 import axios from "axios";

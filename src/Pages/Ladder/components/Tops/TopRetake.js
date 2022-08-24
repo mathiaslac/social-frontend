@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 
-import "./module.top.css";
+import "../module.top.css";
 import { motion } from "framer-motion";
 
 import axios from "axios";
@@ -18,11 +18,11 @@ const YourPlace = [
     deaths: 0,
   },
 ];
-const TopAwp = () => {
+const TopRetake = () => {
   const [players, setPlayers] = useState([]);
 
   const getPlayers = () => {
-    axios.get("http://localhost:5000/api/ranks/awp").then((response) => {
+    axios.get("http://localhost:5000/api/ranks/retake").then((response) => {
       console.log(response.data);
       const players = response.data;
       setPlayers(players);
@@ -152,4 +152,4 @@ const TopAwp = () => {
   );
 };
 
-export default TopAwp;
+export default TopRetake;
