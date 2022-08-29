@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import { Modal } from "../../modules/modal";
 
-import { Navbar, Sidebar } from "./components";
+import { Navbar } from "./components";
 
 import ContextMenu from "../../common/components/ContextMenu";
 
@@ -12,18 +12,16 @@ const CoreLayout = () => (
     style={{
       display: "grid",
       gridTemplateAreas: `
-    "logo header header"
-    "navbar main main"
-    "footer footer footer"`,
+    "header"
+    "main"`,
       gridGapColumnGap: 16,
-      gridTemplateRows: "56px 1fr",
-      gridTemplateColumns: "250px 1fr 90px",
+      gridTemplateRows: "106px 1fr",
+      gridTemplateColumns: "1fr",
       position: "fixed",
       inset: 0,
     }}
   >
     <Navbar />
-    <Sidebar />
     <main
       style={{
         gridArea: "main",
@@ -33,6 +31,7 @@ const CoreLayout = () => (
         flexDirection: "column",
         alignItems: "center",
         paddingBottom: 30,
+        paddingTop: 30,
       }}
     >
       <Outlet />

@@ -1,0 +1,14 @@
+.flagSwitcher {
+  height: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.li-lang {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-content: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+}

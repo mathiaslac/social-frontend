@@ -65,12 +65,18 @@
 }
 .iourDk:nth-of-type(1) .top-color {
   color: #ffdb5c;
+  text-shadow: -1px -1px 0 #1c1e28, 1px -1px 0 #1c1e28, -1px 1px 0 #1c1e28,
+    1px 1px 0 #1c1e28;
 }
 .iourDk:nth-of-type(2) .top-color {
   color: #bfe0ff;
+  text-shadow: -1px -1px 0 #1c1e28, 1px -1px 0 #1c1e28, -1px 1px 0 #1c1e28,
+    1px 1px 0 #1c1e28;
 }
 .iourDk:nth-of-type(3) .top-color {
   color: #f8a785;
+  text-shadow: -1px -1px 0 #1c1e28, 1px -1px 0 #1c1e28, -1px 1px 0 #1c1e28,
+    1px 1px 0 #1c1e28;
 }
 .iourDk:nth-of-type(1)::before {
   background: linear-gradient(
@@ -137,6 +143,11 @@
     rgb(33, 43, 79) 99.18%
   );
 }
+.top-color {
+  color: #81869b;
+  text-shadow: -1px -1px 0 #1c1e28, 1px -1px 0 #1c1e28, -1px 1px 0 #1c1e28,
+    1px 1px 0 #1c1e28;
+}
 .player-td span {
   /* position: absolute; */
   top: 50%;
@@ -168,7 +179,6 @@
   pointer-events: none;
 }
 .pos-mr div {
-  width: 14px;
   margin-right: 28px;
 }
 .limited-length {
@@ -199,4 +209,25 @@
 }
 .grey-scroll::-webkit-scrollbar-thumb {
   background: #374256;
+}
+.rankIcon {
+  align-items: center;
+  display: flex;
+}
+.rankImg {
+  z-index: 0;
+  margin-left: -41px;
+  width: 43px;
+  margin-top: -1px;
+}
+.rankIcon__rank {
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  height: 34px;
+  justify-content: center;
+  line-height: 28px;
+  margin-bottom: 0px;
+  position: absolute;
+  width: 40px;
 }

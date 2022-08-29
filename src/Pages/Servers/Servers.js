@@ -20,9 +20,7 @@ const Servers = () => {
   const [showComp, setShowComp] = useState(false);
 
   const [awpServer, setAwpServer] = useState([]);
-  const [AwpRaw, setAwpRaw] = useState([]);
   const [AwpPlayer, setAwpPlayers] = useState([]);
-  const [AwpBot, setAwpBots] = useState([]);
 
   const [retakeServer, setRetakeServer] = useState([]);
   const [RetakeRaw, setRetakeRaw] = useState([]);
@@ -65,44 +63,50 @@ const Servers = () => {
     });
 
   const getAwpServer = () => {
-    axios.get("http://localhost:5000/api/servers/awp").then((response) => {
-      const awpServers = response.data.info;
+    axios.get("http://localhost:5000/api/servers/awp/info").then((response) => {
+      const awpServers = response.data;
       setAwpServer(awpServers);
-      const AwpRaws = response.data.info.raw;
-      setAwpRaw(AwpRaws);
-      const AwpPlayers = response.data.info.players;
-      setAwpPlayers(AwpPlayers);
-      const AwpBots = response.data.info.bots;
-      setAwpBots(AwpBots);
     });
+  };
+  const getAwpPlayers = () => {
+    axios
+      .get("http://localhost:5000/api/servers/awp/players")
+      .then((response) => {
+        const AwpPlayers = response.data;
+        setAwpPlayers(AwpPlayers);
+      });
   };
 
   const getRetakeServer = () => {
-    axios.get("http://localhost:5000/api/servers/retake").then((response) => {
-      const retakeServers = response.data.info;
-      setRetakeServer(retakeServers);
-      const RetakeRaws = response.data.info.raw;
-      setRetakeRaw(RetakeRaws);
-      const RetakePlayers = response.data.info.players;
-      setRetakePlayers(RetakePlayers);
-      const RetakeBots = response.data.info.bots;
-      setRetakeBots(RetakeBots);
-    });
+    axios
+      .get("http://localhost:5000/api/servers/retake/info")
+      .then((response) => {
+        const retakeServers = response.data.info;
+        setRetakeServer(retakeServers);
+        const RetakeRaws = response.data.info.raw;
+        setRetakeRaw(RetakeRaws);
+        const RetakePlayers = response.data.info.players;
+        setRetakePlayers(RetakePlayers);
+        const RetakeBots = response.data.info.bots;
+        setRetakeBots(RetakeBots);
+      });
   };
   const getBhopServer = () => {
-    axios.get("http://localhost:5000/api/servers/bhop").then((response) => {
-      const bhopServers = response.data.info;
-      setBhopServer(bhopServers);
-      const BhopRaws = response.data.info.raw;
-      setBhopRaw(BhopRaws);
-      const BhopPlayers = response.data.info.players;
-      setBhopPlayers(BhopPlayers);
-      const BhopBots = response.data.info.bots;
-      setBhopBots(BhopBots);
-    });
+    axios
+      .get("http://localhost:5000/api/servers/bhop/info")
+      .then((response) => {
+        const bhopServers = response.data.info;
+        setBhopServer(bhopServers);
+        const BhopRaws = response.data.info.raw;
+        setBhopRaw(BhopRaws);
+        const BhopPlayers = response.data.info.players;
+        setBhopPlayers(BhopPlayers);
+        const BhopBots = response.data.info.bots;
+        setBhopBots(BhopBots);
+      });
   };
   const getHnsServer = () => {
-    axios.get("http://localhost:5000/api/servers/hns").then((response) => {
+    axios.get("http://localhost:5000/api/servers/hns/info").then((response) => {
       const hnsServers = response.data.info;
       setHnsServer(hnsServers);
       const HnsRaws = response.data.info.raw;
@@ -114,7 +118,7 @@ const Servers = () => {
     });
   };
   const getDmServer = () => {
-    axios.get("http://localhost:5000/api/servers/dm").then((response) => {
+    axios.get("http://localhost:5000/api/servers/dm/info").then((response) => {
       const dmServers = response.data.info;
       setDmServer(dmServers);
       const DmRaws = response.data.info.raw;
@@ -126,29 +130,31 @@ const Servers = () => {
     });
   };
   const getCompServer = () => {
-    axios.get("http://localhost:5000/api/servers/comp").then((response) => {
-      const compServers = response.data.info;
-      setCompServer(compServers);
-      const CompRaws = response.data.info.raw;
-      setCompRaw(CompRaws);
-      const CompPlayers = response.data.info.players;
-      setCompPlayers(CompPlayers);
-      const CompBots = response.data.info.bots;
-      setCompBots(CompBots);
-    });
+    axios
+      .get("http://localhost:5000/api/servers/comp/info")
+      .then((response) => {
+        const compServers = response.data.info;
+        setCompServer(compServers);
+        const CompRaws = response.data.info.raw;
+        setCompRaw(CompRaws);
+        const CompPlayers = response.data.info.players;
+        setCompPlayers(CompPlayers);
+        const CompBots = response.data.info.bots;
+        setCompBots(CompBots);
+      });
   };
 
   const awpCountClass = () => {
-    if (AwpRaw.numplayers <= 10) {
+    if (awpServer.players <= 10) {
       document.getElementById("awpProg").classList.add("green");
-    } else if (AwpRaw.numplayers <= 20) {
+    } else if (awpServer.players <= 20) {
       document.getElementById("awpProg").classList.add("orange");
-    } else if (AwpRaw.numplayers <= 25) {
+    } else if (awpServer.players <= 25) {
       document.getElementById("awpProg").classList.add("red");
     }
   };
 
-  const awpHeight = Math.round(AwpRaw.numplayers * 100) / awpServer.maxplayers;
+  const awpHeight = Math.round(awpServer.players * 100) / awpServer.maxplayers;
   const retakeHeight =
     Math.round(RetakeRaw.numplayers * 100) / retakeServer.maxplayers;
   const bhopHeight =
@@ -204,12 +210,15 @@ const Servers = () => {
     }
   };
 
-  useEffect(() => getAwpServer(), []);
-  useEffect(() => getRetakeServer(), []);
-  useEffect(() => getBhopServer(), []);
-  useEffect(() => getHnsServer(), []);
-  useEffect(() => getDmServer(), []);
-  useEffect(() => getCompServer(), []);
+  useEffect(() => {
+    getAwpServer();
+    getAwpPlayers();
+    getRetakeServer();
+    getBhopServer();
+    getHnsServer();
+    getDmServer();
+    getCompServer();
+  }, []);
 
   useEffect(() => awpCountClass());
   useEffect(() => retakeCountClass());
@@ -227,7 +236,7 @@ const Servers = () => {
         <div className="all__online">
           <p>
             <span style={{ color: "#64b44d", marginRight: "5px" }}>
-              {AwpRaw.numplayers +
+              {awpServer.players +
                 RetakeRaw.numplayers +
                 BhopRaw.numplayers +
                 HnsRaw.numplayers +
@@ -254,11 +263,11 @@ const Servers = () => {
                 style={{ height: awpHeight + "%" }}
               ></div>
             </div>
-            {AwpRaw.numplayers}/{awpServer.maxplayers}
+            {awpServer.players}/{awpServer.maxplayers}
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
-            {awpServer.ping}
+            {awpServer.protocol}
           </div>
           <div className="server-row__map">
             <span className="limited-length">awp_lego_2</span>
@@ -333,20 +342,6 @@ const Servers = () => {
                           </th>
                         </tr>
                       ))}
-                    {AwpBot &&
-                      AwpBot.map((Bot, index) => (
-                        <tr key={index}>
-                          <th className="press-left server-modal__name">
-                            {Bot.name}
-                          </th>
-                          <th>{Bot.score}</th>
-                          <th>
-                            {new Date(Bot.time * 1000)
-                              .toISOString()
-                              .substring(11, 19)}
-                          </th>
-                        </tr>
-                      ))}
                   </tbody>
                 </table>
               </div>
@@ -392,7 +387,7 @@ const Servers = () => {
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
-            {retakeServer.ping}
+            {retakeServer.protocol}
           </div>
           <div className="server-row__map">
             <span className="limited-length">{retakeServer.map}</span>
@@ -537,7 +532,7 @@ const Servers = () => {
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
-            {bhopServer.ping}
+            {bhopServer.protocol}
           </div>
           <div className="server-row__map">
             <span className="limited-length">{bhopServer.map}</span>
@@ -671,7 +666,7 @@ const Servers = () => {
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
-            {hnsServer.ping}
+            {hnsServer.protocol}
           </div>
           <div className="server-row__map">
             <span className="limited-length">{hnsServer.map}</span>
@@ -801,7 +796,7 @@ const Servers = () => {
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
-            {dmServer.ping}
+            {dmServer.protocol}
           </div>
           <div className="server-row__map">
             <span className="limited-length">{dmServer.map}</span>
@@ -927,7 +922,7 @@ const Servers = () => {
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
-            {compServer.ping}
+            {compServer.protocol}
           </div>
           <div className="server-row__map">
             <span className="limited-length">{compServer.map}</span>

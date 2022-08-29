@@ -12,6 +12,20 @@ const posts = [
     nickname: "Snooze",
     p1: "Test Post",
   },
+  {
+    id: "regular2",
+    userImg: "assets/img/steamUser.png",
+    className: "card__post",
+    nickname: "Snooze",
+    p1: "Test Post 2",
+  },
+  {
+    id: "regular2",
+    userImg: "assets/img/steamUser.png",
+    className: "card__post",
+    nickname: "Snooze",
+    p1: "Test Post 3",
+  },
 ];
 
 const RegularPost = () => {

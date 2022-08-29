@@ -22,11 +22,13 @@ const TopAwp = () => {
   const [players, setPlayers] = useState([]);
 
   const getPlayers = () => {
-    axios.get("http://localhost:5000/api/ranks/awp").then((response) => {
-      console.log(response.data);
-      const players = response.data;
-      setPlayers(players);
-    });
+    axios
+      .get("http://localhost:5000/api/servers/awp/ranks")
+      .then((response) => {
+        console.log(response.data);
+        const players = response.data;
+        setPlayers(players);
+      });
   };
 
   useEffect(() => getPlayers(), []);
@@ -106,16 +108,24 @@ const TopAwp = () => {
                     className="pos-mr top-color"
                     style={{ color: player.color }}
                   >
-                    <div>
+                    <div className="rankIcon">
                       <img
-                        src={`assets/img/svg/place/${index + 1}.svg`}
+                        src={`assets/img/svg/place/new/rank.svg`}
+                        onError={(event) =>
+                          (event.target.style.display = "none")
+                        }
+                        alt="pos-img"
+                      />
+                      <img
+                        className="rankImg"
+                        src={`assets/img/svg/place/new/${index + 1}.svg`}
                         onError={(event) =>
                           (event.target.style.display = "none")
                         }
                         alt="pos-img"
                       />
                     </div>
-                    {index + 1}
+                    <span className="rankIcon__rank">{index + 1}</span>
                   </td>
                   <td className="user-fix">
                     <a href={`profile/${player.steam}`}>
