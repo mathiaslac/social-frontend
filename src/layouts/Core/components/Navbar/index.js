@@ -135,7 +135,7 @@ const Navbar = (props) => {
             </li>
           </NavLink>
           <NavLink
-            to="/ladder"
+            to="/leadboards"
             className={({ isActive }) => `${isActive ? "active" : ""}`}
           >
             <li className="ideas-menu-item">

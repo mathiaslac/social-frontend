@@ -15,6 +15,7 @@ const Home = lazy(() => import("./Pages/Home/Home"));
 const Servers = lazy(() => import("./Pages/Servers/Servers"));
 const Events = lazy(() => import("./Pages/Events/Events"));
 const Ladder = lazy(() => import("./Pages/Ladder/Ladder"));
+const Leadboards = lazy(() => import("./Pages/Ladder/Leadboards"));
 
 const App = () => {
   return (
@@ -51,6 +52,14 @@ const App = () => {
               element={
                 <Suspense fallback={null}>
                   <Servers />
+                </Suspense>
+              }
+            />
+            <Route
+              path="leadboards"
+              element={
+                <Suspense fallback={null}>
+                  <Leadboards />
                 </Suspense>
               }
             />
