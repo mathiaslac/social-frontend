@@ -1,8 +1,10 @@
 import { Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 import "../module.mods-grid.css";
 
 const Bhop = () => {
+  const { t } = useTranslation();
   const [count, setCount] = useState([]);
 
   const getCount = () => {
@@ -32,7 +34,7 @@ const Bhop = () => {
             }}
           ></div>
           <h3 className="ideas-typography gamecover-title__cover clickable">
-            BHOP
+            Bhop
           </h3>
           <article
             className="ideas-typography gamecover-playerCount__cover clickable"
@@ -41,7 +43,7 @@ const Bhop = () => {
             <span style={{ color: "rgb(116, 209, 24)", marginRight: "5px" }}>
               1438
             </span>
-            players ranked
+            {t("leadboards-playersRanked")}
           </article>
         </div>
       </div>

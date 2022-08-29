@@ -2,6 +2,7 @@ import "./navbar.css";
 import "./module.modal-chat.css";
 
 import { NavLink, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { motion } from "framer-motion";
 import MenuChats from "./Components/MenuChats";
@@ -64,6 +65,7 @@ window.onclick = function (event) {
 };
 
 const Navbar = (props) => {
+  const { t } = useTranslation();
   return (
     <header style={{ gridArea: "header" }}>
       <div className="main-header">
@@ -98,7 +100,7 @@ const Navbar = (props) => {
                       height="20"
                       width="20"
                     />
-                    Search
+                    {t("navbar-search")}
                   </span>
                 </span>
               </div>
@@ -117,7 +119,7 @@ const Navbar = (props) => {
                 height={"24px"}
                 width={"24px"}
               />
-              <span>Home</span>
+              <span>{t("navbar-home")}</span>
             </li>
           </NavLink>
           <NavLink
@@ -131,7 +133,7 @@ const Navbar = (props) => {
                 height={"24px"}
                 width={"24px"}
               />
-              <span>Play</span>
+              <span>{t("navbar-play")}</span>
             </li>
           </NavLink>
           <NavLink
@@ -145,7 +147,7 @@ const Navbar = (props) => {
                 height={"24px"}
                 width={"24px"}
               />
-              <span>Leadboards</span>
+              <span>{t("navbar-leadboards")}</span>
             </li>
           </NavLink>
           <NavLink
@@ -159,7 +161,7 @@ const Navbar = (props) => {
                 height={"24px"}
                 width={"24px"}
               />
-              <span>Events</span>
+              <span>{t("navbar-events")}</span>
             </li>
           </NavLink>
           <NavLink
@@ -173,7 +175,7 @@ const Navbar = (props) => {
                 height={"24px"}
                 width={"24px"}
               />
-              <span>Donate</span>
+              <span>{t("navbar-donate")}</span>
             </li>
           </NavLink>
         </ul>

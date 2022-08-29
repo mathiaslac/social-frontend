@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
-import "./module.header-leads.css";
+import "./module.header-events.css";
 
-const HeaderLeads = () => {
+const HeaderEvents = () => {
   const { t } = useTranslation();
   return (
     <Fragment>
@@ -16,7 +16,7 @@ const HeaderLeads = () => {
           <div className="game-lobbies_banner__textArea__3PnMB">
             <div className="game-lobbies_banner__textArea__titleRow__30eNe">
               <h1 className="game-lobbies_banner__text__h1__37RuS game-lobbies_font__size__h1__1nFs5 game-lobbies_font__weight__bold__WJF_V">
-                {t("leadboards-headerTitle")}
+                {t("events-headerTitle")}
               </h1>
               <div className="game-lobbies_banner__textArea__betaBox__2_VSl">
                 <h2 className="game-lobbies_banner__text__h2__2F138 game-lobbies_font__size__h8__1dYOr game-lobbies_font__weight__bold__WJF_V">
@@ -25,13 +25,14 @@ const HeaderLeads = () => {
               </div>
             </div>
             <h3 className="game-lobbies_banner__text__h3__THu1F game-lobbies_font__size__h6__1P4Iz game-lobbies_font__weight__semiBold__181Nd">
-              {t("leadboards-headerSubTitle")}
+              {t("events-headerSubTitle")}
             </h3>
           </div>
           <img
             className="game-lobbies_banner__overlay__1LmJc"
-            src="assets/img/background/overlay-leads.png"
+            src="assets/img/background/hero.png"
             alt="banner-overlay"
+            style={{ right: "0px" }}
           />
         </div>
       </div>
@@ -39,4 +40,4 @@ const HeaderLeads = () => {
   );
 };
 
-export default HeaderLeads;
+export default HeaderEvents;

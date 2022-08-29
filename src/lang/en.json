@@ -1,4 +1,18 @@
 {
-  "hello": "hello",
-  "how are you?": "how are you?"
+  "landing-hello": "hello",
+  "landing-how are you?": "how are you?",
+
+  "navbar-search": "Search",
+  "navbar-home": "Home",
+  "navbar-play": "Play",
+  "navbar-leadboards": "Leadboards",
+  "navbar-events": "Events",
+  "navbar-donate": "Donate",
+
+  "leadboards-headerTitle": "Leadboards",
+  "leadboards-headerSubTitle": "Find the ranking of all our servers.",
+  "leadboards-playersRanked": "players ranked",
+
+  "events-headerTitle": "Events",
+  "events-headerSubTitle": "All events at same place."
 }

@@ -1,0 +1,102 @@
+.game-lobbies_page__header__6AFcN {
+  left: 0;
+  position: relative;
+  margin-bottom: 30px;
+}
+.game-lobbies_banner__ey2ZJ {
+  position: relative;
+  max-width: 100%;
+}
+.game-lobbies_unselectable__28lUK {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.game-lobbies_banner__img__ZrJZu {
+  max-width: 100%;
+}
+.game-lobbies_banner__textArea__3PnMB {
+  z-index: 5;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 50px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.game-lobbies_banner__textArea__titleRow__30eNe {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 4px;
+}
+.game-lobbies_banner__text__h1__37RuS,
+.game-lobbies_banner__text__h2__2F138 {
+  margin: 0;
+}
+
+.game-lobbies_font__size__h1__1nFs5 {
+  font-size: 40px;
+  line-height: 42px;
+}
+.game-lobbies_font__weight__bold__WJF_V {
+  font-weight: 700;
+}
+.game-lobbies_banner__textArea__betaBox__2_VSl {
+  background-color: rgba(100, 105, 123, 0.5);
+  border-radius: 4px;
+  padding: 7px 12px;
+  margin-left: 15px;
+  overflow: hidden;
+  max-width: 70px;
+  -webkit-transition: max-width 2s ease-in, padding 2s ease-in;
+  transition: max-width 2s ease-in, padding 2s ease-in;
+}
+.game-lobbies_banner__text__h1__37RuS,
+.game-lobbies_banner__text__h2__2F138 {
+  margin: 0;
+}
+
+.game-lobbies_font__size__h8__1dYOr {
+  font-size: 12px;
+  line-height: 16px;
+}
+.game-lobbies_font__weight__bold__WJF_V {
+  font-weight: 700;
+}
+.game-lobbies_banner__text__h3__THu1F {
+  margin: 0;
+  color: #81869b;
+  max-height: 30px;
+  opacity: 1;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.game-lobbies_font__size__h6__1P4Iz {
+  font-size: 15px;
+  line-height: 24px;
+}
+.game-lobbies_font__weight__semiBold__181Nd {
+  font-weight: 600;
+}
+.game-lobbies_banner__overlay__1LmJc {
+  z-index: 1;
+  height: 120%;
+  position: absolute;
+  right: -40px;
+  bottom: 0;
+  -webkit-transition: height 2s ease-in-out, right 2s ease-in-out;
+  transition: height 2s ease-in-out, right 2s ease-in-out;
+}

@@ -12,8 +12,8 @@ const Landing = () => {
       </Helmet>
       <div className="shop">
         <div className="card" style={{ marginTop: "100px" }}>
-          <h1>{t("hello")}</h1>
-          <h1>{t("how are you?")}</h1>
+          <h1>{t("landing-hello")}</h1>
+          <h1>{t("landing-how are you?")}</h1>
         </div>
       </div>
     </Fragment>
