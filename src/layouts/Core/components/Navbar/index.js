@@ -163,7 +163,7 @@ const Navbar = (props) => {
             </li>
           </NavLink>
           <NavLink
-            to="/premium"
+            to="/Donate"
             className={({ isActive }) => `${isActive ? "active" : ""}`}
           >
             <li className="ideas-menu-item">

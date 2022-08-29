@@ -10,7 +10,7 @@ import { ModalProvider } from "./modules/modal";
 import { NotFound, Profiles } from "./Pages/index";
 
 const Landing = lazy(() => import("./Pages/Landing/Landing"));
-const Shop = lazy(() => import("./Pages/Shop/Shop"));
+const Donate = lazy(() => import("./Pages/Donate/Donate"));
 const Home = lazy(() => import("./Pages/Home/Home"));
 const Servers = lazy(() => import("./Pages/Servers/Servers"));
 const Events = lazy(() => import("./Pages/Events/Events"));
@@ -40,10 +40,10 @@ const App = () => {
               }
             />
             <Route
-              path="premium"
+              path="donate"
               element={
                 <Suspense fallback={null}>
-                  <Shop />
+                  <Donate />
                 </Suspense>
               }
             />
