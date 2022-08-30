@@ -1,0 +1,45 @@
+.user-tab {
+  align-items: center;
+  background: #232633;
+  display: flex;
+  border-radius: 8px;
+  justify-content: left;
+  margin: 0px 0px 10px 0px;
+  padding: 16px;
+  width: 320px;
+}
+.user {
+  display: flex;
+  align-items: flex-end;
+}
+.user-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.flex-users {
+  display: flex;
+  align-items: center;
+}
+.dotBack {
+  margin-left: -12px;
+  margin-bottom: 2px;
+  border: 4px solid #232633;
+  height: 16px;
+  width: 16px;
+}
+.last-message {
+  white-space: nowrap;
+  width: 190px;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  font-size: x-small;
+  font-weight: 300;
+}
+.activity {
+  margin-left: 25px;
+}
+.last-activity {
+  font-size: 13px;
+  font-weight: 600;
+}

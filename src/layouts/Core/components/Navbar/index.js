@@ -5,7 +5,6 @@ import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { motion } from "framer-motion";
-import MenuChats from "./Components/MenuChats";
 import LangSwitcher from "../../../../common/components/LangSwitcher/LangSwitcher";
 
 // import LangSwitcher from "../../../../common/components/LangSwitcher/LangSwitcher";
@@ -14,9 +13,6 @@ import NoNotificationsSvg from "./Svg/NoNotificationsSvg";
 
 window.onload = function () {};
 
-const dropChats = () => {
-  document.getElementById("Dropdown-Chats").classList.toggle("showChats");
-};
 const dropPush = () => {
   document.getElementById("Dropdown-Push").classList.toggle("show");
 };
@@ -33,19 +29,6 @@ window.onclick = function (event) {
       var openDropdown = dropdowns[i];
       if (openDropdown.classList.contains("showLang")) {
         openDropdown.classList.remove("showLang");
-      }
-    }
-  }
-};
-
-window.onclick = function (event) {
-  if (!event.target.matches(".dropChats")) {
-    var dropdowns = document.getElementsByClassName("dropdown-chats-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("showChats")) {
-        openDropdown.classList.remove("showChats");
       }
     }
   }
@@ -84,7 +67,7 @@ const Navbar = (props) => {
               <div className="ideas-select-selector">
                 <span className="ideas-select-selection-search">
                   <input
-                    autocomplete="off"
+                    autoComplete="off"
                     type="search"
                     className="ideas-select-selection-search-input"
                     value=""
@@ -165,7 +148,7 @@ const Navbar = (props) => {
             </li>
           </NavLink>
           <NavLink
-            to="/Donate"
+            to="/donate"
             className={({ isActive }) => `${isActive ? "active" : ""}`}
           >
             <li className="ideas-menu-item">
@@ -202,23 +185,24 @@ const Navbar = (props) => {
               </div>
             </div>
           </Link>
-          <svg
-            className="ideas-dropdown-trigger dropChats messages-menu pointer"
-            onClick={dropChats}
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="#81869B"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M13.0374 15.4473C13.2096 14.1903 14.1903 13.2096 15.4473 13.0374C16.1683 12.9387 16.9514 12.8571 17.5714 12.8571C18.1914 12.8571 18.9746 12.9387 19.6955 13.0374C20.9526 13.2096 21.9333 14.1903 22.1054 15.4473C22.2042 16.1683 22.2857 16.9514 22.2857 17.5714C22.2857 18.1915 22.2042 18.9746 22.1054 19.6955C21.9333 20.9526 20.9526 21.9333 19.6955 22.1054C18.9746 22.2042 18.1914 22.2857 17.5714 22.2857C16.9514 22.2857 16.1683 22.2042 15.4473 22.1054C14.1903 21.9333 13.2096 20.9526 13.0374 19.6955C12.9387 18.9746 12.8571 18.1915 12.8571 17.5714C12.8571 16.9514 12.9387 16.1683 13.0374 15.4473Z"></path>
-            <path d="M1.89457 15.4473C2.06673 14.1903 3.04742 13.2096 4.30446 13.0374C5.02544 12.9387 5.80855 12.8571 6.42857 12.8571C7.04859 12.8571 7.8317 12.9387 8.55269 13.0374C9.80973 13.2096 10.7904 14.1903 10.9626 15.4473C11.0613 16.1683 11.1429 16.9514 11.1429 17.5714C11.1429 18.1915 11.0613 18.9746 10.9626 19.6955C10.7904 20.9526 9.80973 21.9333 8.55269 22.1054C7.8317 22.2042 7.04859 22.2857 6.42857 22.2857C5.80855 22.2857 5.02544 22.2042 4.30446 22.1054C3.04742 21.9333 2.06673 20.9526 1.89457 19.6955C1.79583 18.9746 1.71429 18.1915 1.71429 17.5714C1.71429 16.9514 1.79583 16.1683 1.89457 15.4473Z"></path>
-            <path d="M13.0374 4.30445C13.2096 3.04741 14.1903 2.06672 15.4473 1.89457C16.1683 1.79582 16.9514 1.71428 17.5714 1.71428C18.1914 1.71428 18.9746 1.79582 19.6955 1.89457C20.9526 2.06672 21.9333 3.04741 22.1054 4.30445C22.2042 5.02543 22.2857 5.80854 22.2857 6.42856C22.2857 7.04859 22.2042 7.8317 22.1054 8.55268C21.9333 9.80972 20.9526 10.7904 19.6955 10.9626C18.9746 11.0613 18.1914 11.1428 17.5714 11.1428C16.9514 11.1428 16.1683 11.0613 15.4473 10.9626C14.1903 10.7904 13.2096 9.80972 13.0374 8.55268C12.9387 7.8317 12.8571 7.04859 12.8571 6.42856C12.8571 5.80854 12.9387 5.02543 13.0374 4.30445Z"></path>
-            <path d="M1.89457 4.30445C2.06673 3.04741 3.04742 2.06672 4.30446 1.89457C5.02544 1.79582 5.80855 1.71428 6.42857 1.71428C7.04859 1.71428 7.8317 1.79582 8.55269 1.89457C9.80973 2.06672 10.7904 3.04741 10.9626 4.30445C11.0613 5.02543 11.1429 5.80854 11.1429 6.42856C11.1429 7.04859 11.0613 7.8317 10.9626 8.55268C10.7904 9.80972 9.80973 10.7904 8.55269 10.9626C7.8317 11.0613 7.04859 11.1428 6.42857 11.1428C5.80855 11.1428 5.02544 11.0613 4.30446 10.9626C3.04742 10.7904 2.06673 9.80972 1.89457 8.55268C1.79583 7.8317 1.71429 7.04859 1.71429 6.42856C1.71429 5.80854 1.79583 5.02543 1.89457 4.30445Z"></path>
-          </svg>
-          <div id="Dropdown-Chats" className="dropdown-chats-content">
-            <MenuChats />
-          </div>
+          <Link to="/chats">
+            <svg
+              className="ideas-dropdown-trigger dropChats messages-menu pointer"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M2.37546 5.91957C2.66565 4.23488 4.00472 2.99648 5.69477 2.73932C7.31411 2.49293 9.53559 2.25 12 2.25C14.4644 2.25 16.6859 2.49293 18.3052 2.73932C19.9953 2.99648 21.3344 4.23488 21.6245 5.91957C21.8268 7.09372 22 8.58525 22 10.25C22 11.9147 21.8268 13.4063 21.6245 14.5804C21.3344 16.2651 19.9953 17.5035 18.3052 17.7607C16.8238 17.9861 14.8384 18.2086 12.6241 18.2449L6.50873 21.8585C5.84211 22.2524 5 21.7719 5 20.9976V17.594C3.64656 17.1439 2.62456 16.0266 2.37546 14.5804C2.17321 13.4063 2 11.9147 2 10.25C2 8.58525 2.17321 7.09372 2.37546 5.91957Z"
+                fill="#81869B"
+              />
+            </svg>
+          </Link>
+
           <div>
             <div
               onClick={dropPush}

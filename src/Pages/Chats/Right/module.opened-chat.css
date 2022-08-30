@@ -1,0 +1,29 @@
+.opened-chat {
+  display: flex;
+}
+.send-btn {
+  border-radius: 8px;
+  background: #292d3d;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  line-height: 24px;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.send-btn > img {
+  height: 22px;
+  width: 22px;
+}
+.margin-r__svg {
+  margin-right: 5px;
+}
+.flex-opeend {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

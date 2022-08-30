@@ -1,0 +1,8 @@
+.messages {
+  display: flex;
+}
+.text-message {
+  background: #232633;
+  padding: 16px;
+  border-radius: 8px;
+}

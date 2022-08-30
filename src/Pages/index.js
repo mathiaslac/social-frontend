@@ -4,6 +4,6 @@ export { default as Servers } from "./Servers/Servers";
 export { default as Home } from "./Home/Home";
 export { default as Ladder } from "./Ladder/Ladder";
 export { default as Landing } from "./Landing/Landing";
-export { default as Pages } from "./Pages/Pages";
+export { default as Chats } from "./Chats/Chats";
 export { default as Profiles } from "./Profiles/76561198184313278";
 export { default as Donate } from "./Donate/Donate";
