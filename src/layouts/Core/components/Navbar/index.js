@@ -182,6 +182,27 @@ const Navbar = (props) => {
                 <span className="ideas-typography ideas-typography-ellipsis ideas-typography-ellipsis-single-line header__userAvatarName">
                   Snooze
                 </span>
+                <span className="userAvatarName__balance fade">
+                  <img
+                    src="assets/img/svg/navbar/Credits.svg"
+                    alt="credits"
+                    style={{
+                      height: "16px",
+                      width: "16px",
+                      marginRight: "4px",
+                      verticalAlign: "text-top",
+                    }}
+                  />
+                  <span className="userAvatarName__balanceNumber">
+                    <span className="userAvatarName__balanceDigit">
+                      127,553
+                    </span>
+                    <span className="userAvatarName__balanceCoins">
+                      {" "}
+                      credits
+                    </span>
+                  </span>
+                </span>
               </div>
             </div>
           </Link>
