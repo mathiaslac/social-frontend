@@ -874,8 +874,9 @@ svg:not(:root) {
   margin: 0 32px;
 }
 .dropLang {
-  margin-left: 10px;
+  margin-left: 30px;
   filter: drop-shadow(0 0 10px #3b69b280);
+  cursor: pointer;
 }
 .dropdown-lang-content {
   transform: scale(0);
