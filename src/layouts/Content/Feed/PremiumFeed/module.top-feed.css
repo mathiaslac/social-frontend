@@ -1,0 +1,253 @@
+.newsFeedFilters-full-width.ideas-radio-group {
+  -webkit-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 14px !important;
+}
+.twoCol__left--xs,
+.twoCol__left--xs > div,
+.twoCol__left--xs > footer {
+  width: 320px;
+  max-width: 320px;
+}
+.ideas-radio-group {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  -webkit-font-feature-settings: "tnum", "tnum";
+  -moz-font-feature-settings: "tnum", "tnum";
+  font-feature-settings: "tnum", "tnum";
+  display: inline-block;
+  font-size: 0;
+  line-height: unset;
+}
+.ideas-space-vertical {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.ideas-space {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+.ideas-badge {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  -webkit-font-feature-settings: "tnum", "tnum";
+  -moz-font-feature-settings: "tnum", "tnum";
+  font-feature-settings: "tnum", "tnum";
+  position: relative;
+  display: inline-block;
+  color: unset;
+  line-height: 1;
+}
+.new-badge-full-width {
+  width: 100% !important;
+}
+.newsFeedFilters-full-width.ideas-radio-group .ideas-radio-button-wrapper {
+  -webkit-align-items: center;
+  align-items: center;
+  background: none !important;
+  border-radius: 8px !important;
+  border: none !important;
+  display: -webkit-flex;
+  display: flex;
+  height: 40px;
+  margin-right: 8px;
+}
+.ideas-radio-button-wrapper:first-child:last-child {
+  border-radius: 8px;
+}
+.ideas-radio-button-wrapper:last-child {
+  border-radius: 0 8px 8px 0;
+}
+.ideas-radio-button-wrapper:first-child {
+  border-left: 1px #d9d9d9;
+  border-radius: 8px 0 0 8px;
+}
+.ideas-radio-button-wrapper {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  margin: 0;
+  padding: 0 15px;
+  color: #81869b;
+  font-size: 14px;
+  line-height: 38px;
+  background: #292d3d;
+  border-color: #d9d9d9;
+  border-style: none;
+  border-width: 1.02px 1px 1px 0;
+  cursor: pointer;
+  -webkit-transition: color 0.3s, background 0.3s, border-color 0.3s,
+    -webkit-box-shadow 0.3s;
+  transition: color 0.3s, background 0.3s, border-color 0.3s,
+    -webkit-box-shadow 0.3s;
+  transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s,
+    -webkit-box-shadow 0.3s;
+}
+.newsFeedFilters-full-width.ideas-radio-group
+  .ideas-radio-button-wrapper
+  > span {
+  -webkit-align-items: center;
+  align-items: center;
+  color: #fff;
+  display: -webkit-flex;
+  display: flex;
+  font-weight: 600;
+  font-size: 12px;
+}
+.newsFeedFilters-full-width.ideas-radio-group
+  .ideas-radio-button-wrapper
+  > span
+  img,
+.newsFeedFilters-full-width.ideas-radio-group
+  .ideas-radio-button-wrapper
+  > span
+  svg {
+  margin-right: 4px;
+}
+
+.newsFeedFilters-full-width.ideas-radio-group .filter__icon {
+  width: 20px;
+  height: 20px;
+}
+.ideas-typography {
+  overflow-wrap: break-word;
+}
+
+.ideas-typography {
+  color: #fff;
+}
+.newsFeedFilters-full-width.ideas-radio-group
+  .ideas-radio-button-wrapper-checked {
+  background: #232633 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+}
+.ideas-radio-button-wrapper-checked:hover {
+  background: #373a4a !important;
+}
+
+.ideas-btn-primary {
+  color: #fff;
+  background: #3b69b2;
+  border-color: #3b69b2;
+  text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+  -webkit-box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+  box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+}
+.ideas-btn,
+.ideas-btn:active,
+.ideas-btn:focus {
+  outline: 0;
+}
+.ideas-btn {
+  line-height: 16px;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  -webkit-box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+  box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+  cursor: pointer;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 8px;
+  color: #fff;
+  background: #313544;
+  border: 1px #313544;
+}
+.postUploader__btn {
+  -webkit-align-items: center;
+  align-items: center;
+  background: #3b69b2 !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+  cursor: pointer;
+  display: -webkit-flex !important;
+  display: flex !important;
+  font-size: 13px;
+  height: 40px;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+.ideas-btn img:first-child:not(:last-child),
+.ideas-btn svg:first-child:not(:last-child) {
+  margin-right: 4px;
+}
+.postUploader__btn > span {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 24px;
+}
+
+.ideas-btn > span {
+  display: inline-block;
+}
+.twoCol__left--xs,
+.twoCol__left--xs > div,
+.twoCol__left--xs > footer {
+  width: 320px;
+  max-width: 320px;
+}
+.divider-bg-secondary {
+  border-top: 1px solid #232633 !important;
+}
+.ideas-layout,
+.ideas-layout * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ideas-divider-horizontal {
+  display: -webkit-flex;
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  margin: 24px 0;
+}
+.ideas-divider {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  color: #fff;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  -webkit-font-feature-settings: "tnum", "tnum";
+  -moz-font-feature-settings: "tnum", "tnum";
+  font-feature-settings: "tnum", "tnum";
+  border-top: 1px solid #81869b;
+}

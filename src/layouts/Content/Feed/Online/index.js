@@ -1,13 +1,14 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
-import "../Feed.css";
+import "./module.online.css";
 
 const OnlineUser = [
   {
     id: "user1",
     nickname: "User1",
     userImg: "assets/img/friend1.jpg",
+    friendIcon: "assets/img/svg/feed/BlueLike.svg",
     dotClass: "on__dot",
     status: "Online",
     statusClass: "online",
@@ -16,6 +17,7 @@ const OnlineUser = [
     id: "user2",
     nickname: "User2",
     userImg: "assets/img/friend2.jpg",
+    friendIcon: "assets/img/svg/feed/BlueLike.svg",
     dotClass: "on__dot",
     status: "Online",
     statusClass: "online",
@@ -24,6 +26,7 @@ const OnlineUser = [
     id: "user3",
     nickname: "User3",
     userImg: "assets/img/friend3.jpg",
+    friendIcon: "assets/img/svg/feed/BlueLike.svg",
     dotClass: "off__dot",
     status: "Offline",
     statusClass: "offline",
@@ -32,6 +35,7 @@ const OnlineUser = [
     id: "user4",
     nickname: "User4",
     userImg: "assets/img/friend4.jpg",
+    friendIcon: "assets/img/svg/feed/BlueLike.svg",
     dotClass: "off__dot",
     status: "Offline",
     statusClass: "offline",
@@ -40,6 +44,7 @@ const OnlineUser = [
     id: "user5",
     nickname: "User5",
     userImg: "assets/img/friend5.jpg",
+    friendIcon: "assets/img/svg/feed/BlueLike.svg",
     dotClass: "off__dot",
     status: "Offline",
     statusClass: "offline",
@@ -48,41 +53,49 @@ const OnlineUser = [
 
 const Online = () => {
   return (
-    <motion.div
-      className="card"
-      initial={{
-        opacity: 0,
-        transform: "translateY(20px)",
-      }}
-      animate={{
-        opacity: 1,
-        transform: "translateY(0px)",
-      }}
-      transition={{
-        duration: 0.07,
-      }}
-      style={{
-        transition: "opacity 400ms ease 0s, transform 400ms ease 0s",
-      }}
-    >
-      <h3 className="card__title">2 Friends Online</h3>
-      <div className="sub__card">
+    <div className="ideas-col mini-feed">
+      <h3 className="activity__text">Online Friends</h3>
+      <div className="mini__feed">
         {OnlineUser.map(
-          ({ id, nickname, userImg, dotClass, status, statusClass }) => (
-            <div key={id} className="sugg__friends">
-              <img className="avatar-circle" src={userImg} alt={id} />
-              <div className="infos__friends">
-                <p className="nick">{nickname}</p>
-                <p className="count__friends">
+          ({
+            id,
+            nickname,
+            userImg,
+            dotClass,
+            status,
+            statusClass,
+            friendIcon,
+          }) => (
+            <div key={id} className="action__card">
+              <div className="user__img">
+                <span
+                  className="ideas-avatar ideas-avatar-circle ideas-avatar-image"
+                  style={{ height: "32px", width: "32px", fontSize: "32px" }}
+                >
+                  <img
+                    src={userImg}
+                    alt={id}
+                    style={{ height: "100%", width: "100%" }}
+                  />
+                </span>
+                <img src={friendIcon} alt={id} width={16} height={16} />
+              </div>
+              <div className="actionStr">
+                <span>
+                  <Link to={`/profile/${nickname}`} className="username__text">
+                    {nickname}
+                  </Link>
+                </span>
+                <span className="action__timestamp">
                   <span className={dotClass}></span>
                   <span className={statusClass}>{status}</span>
-                </p>
+                </span>
               </div>
             </div>
           )
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

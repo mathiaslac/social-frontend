@@ -3,7 +3,7 @@ import React from "react";
 
 import Sugg from "./Users/index";
 import Online from "./Online/index";
-import PremiumFeed from "./PremiumFeed/index";
+import TopFeed from "./PremiumFeed/TopFeed";
 
 const Feed = () => {
   return (
@@ -14,9 +14,9 @@ const Feed = () => {
         alignSelf: "flex-start",
       }}
     >
-      <PremiumFeed />
-      <Online />
+      <TopFeed />
       <Sugg />
+      <Online />
     </aside>
   );
 };
