@@ -2,9 +2,20 @@ import { Fragment } from "react";
 import "./Landing.css";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
+// import usePing from "../../common/hooks/use-ping";
 
 const Landing = () => {
   const { t } = useTranslation();
+  /*
+  const [awpPing, retakePing, bhopPing, hnsPing, dmPing, compPing] = usePing([
+    "37.187.221.140:27015",
+    "37.187.221.141:27015",
+    "141.95.134.28:27015",
+    "37.187.221.138:27015",
+    "46.105.220.236:27015",
+    "54.36.34.185:27015",
+  ]);
+  */
   return (
     <Fragment>
       <Helmet>
