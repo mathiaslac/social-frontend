@@ -11,7 +11,6 @@ const Awp = () => {
     axios
       .get("http://localhost:5000/api/servers/awp/count")
       .then((response) => {
-        console.log(response.data[0]);
         const count = response.data[0];
         setCount(count);
       });
@@ -41,7 +40,7 @@ const Awp = () => {
             style={{ color: "rgb(129, 134, 155)" }}
           >
             <span style={{ color: "rgb(116, 209, 24)", marginRight: "5px" }}>
-              2083
+              {count.namesCount}
             </span>
             {t("leadboards-playersRanked")}
           </article>

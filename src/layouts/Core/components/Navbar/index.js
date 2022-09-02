@@ -4,6 +4,10 @@ import "./module.modal-chat.css";
 import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import { useState, useEffect } from "react";
+
+import axios from "axios";
+
 import { motion } from "framer-motion";
 import LangSwitcher from "../../../../common/components/LangSwitcher/LangSwitcher";
 
@@ -48,6 +52,18 @@ window.onclick = function (event) {
 };
 
 const Navbar = (props) => {
+  const [credits, setCredits] = useState([]);
+
+  const getCredits = () => {
+    axios
+      .get("http://localhost:5000/api/shop/STEAM_1:1:245043825")
+      .then((response) => {
+        const count = response.data[0];
+        setCredits(count);
+      });
+  };
+
+  useEffect(() => getCredits(), []);
   const { t } = useTranslation();
   return (
     <header style={{ gridArea: "header" }}>
@@ -195,7 +211,10 @@ const Navbar = (props) => {
                   />
                   <span className="userAvatarName__balanceNumber">
                     <span className="userAvatarName__balanceDigit">
-                      127,553
+                      {String(credits.money).replace(
+                        /(.)(?=(\d{3})+$)/g,
+                        "$1,"
+                      )}
                     </span>
                     <span className="userAvatarName__balanceCoins">
                       {" "}

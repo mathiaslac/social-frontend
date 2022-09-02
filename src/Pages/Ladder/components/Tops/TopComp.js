@@ -18,15 +18,17 @@ const YourPlace = [
     deaths: 0,
   },
 ];
-const TopArena = () => {
+const TopComp = () => {
   const [players, setPlayers] = useState([]);
 
   const getPlayers = () => {
-    axios.get("http://localhost:5000/api/ranks/arena").then((response) => {
-      console.log(response.data);
-      const players = response.data;
-      setPlayers(players);
-    });
+    axios
+      .get("http://localhost:5000/api/servers/comp/ranks")
+      .then((response) => {
+        console.log(response.data);
+        const players = response.data;
+        setPlayers(players);
+      });
   };
 
   useEffect(() => getPlayers(), []);
@@ -152,4 +154,4 @@ const TopArena = () => {
   );
 };
 
-export default TopArena;
+export default TopComp;

@@ -22,11 +22,13 @@ const TopHns = () => {
   const [players, setPlayers] = useState([]);
 
   const getPlayers = () => {
-    axios.get("http://localhost:5000/api/ranks/hns").then((response) => {
-      console.log(response.data);
-      const players = response.data;
-      setPlayers(players);
-    });
+    axios
+      .get("http://localhost:5000/api/servers/hns/ranks")
+      .then((response) => {
+        console.log(response.data);
+        const players = response.data;
+        setPlayers(players);
+      });
   };
 
   useEffect(() => getPlayers(), []);

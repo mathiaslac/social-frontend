@@ -1,11 +1,13 @@
 import React, { Fragment } from "react";
+
+import { Outlet } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import RightFeed from "./layout";
-import { Top, HeaderLadder, SeasonsSelect } from "./components";
+import { HeaderLadder, SeasonsSelect } from "./components";
 
 import "./module.ladder.css";
 
-const Ladder = () => {
+const LeaderBoardLayout = () => {
   return (
     <Fragment>
       <Helmet>
@@ -19,11 +21,11 @@ const Ladder = () => {
         <div>
           <HeaderLadder />
           <SeasonsSelect />
-          <Top />
+          <Outlet />
         </div>
       </div>
     </Fragment>
   );
 };
 
-export default Ladder;
+export default LeaderBoardLayout;

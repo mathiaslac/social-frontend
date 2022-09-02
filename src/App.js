@@ -9,12 +9,20 @@ import { ModalProvider } from "./modules/modal";
 
 import { NotFound, Profiles } from "./Pages/index";
 
+import {
+  TopAwp,
+  TopComp,
+  TopDm,
+  TopHns,
+  TopRetake,
+} from "./Pages/Ladder/components/Tops";
+
 const Landing = lazy(() => import("./Pages/Landing/Landing"));
 const Donate = lazy(() => import("./Pages/Donate/Donate"));
 const Home = lazy(() => import("./Pages/Home/Home"));
 const Servers = lazy(() => import("./Pages/Servers/Servers"));
 const Events = lazy(() => import("./Pages/Events/Events"));
-const Ladder = lazy(() => import("./Pages/Ladder/Ladder"));
+const LeaderBoardLayout = lazy(() => import("./Pages/Ladder/Ladder"));
 const Leadboards = lazy(() => import("./Pages/Ladder/Leadboards"));
 const Chats = lazy(() => import("./Pages/Chats/Chats"));
 
@@ -72,14 +80,48 @@ const App = () => {
                 </Suspense>
               }
             />
-            <Route
-              path="ladder"
-              element={
-                <Suspense fallback={null}>
-                  <Ladder />
-                </Suspense>
-              }
-            />
+            <Route path="leaderboard" element={<LeaderBoardLayout />}>
+              <Route
+                path="awp"
+                element={
+                  <Suspense fallback={null}>
+                    <TopAwp />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="dm"
+                element={
+                  <Suspense fallback={null}>
+                    <TopDm />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="hns"
+                element={
+                  <Suspense fallback={null}>
+                    <TopHns />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="retake"
+                element={
+                  <Suspense fallback={null}>
+                    <TopRetake />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="comp"
+                element={
+                  <Suspense fallback={null}>
+                    <TopComp />
+                  </Suspense>
+                }
+              />
+            </Route>
             <Route
               path="events"
               element={

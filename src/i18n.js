@@ -14,6 +14,7 @@ i18next.use(initReactI18next).init({
     },
   },
   lang: localStorage.getItem("lang") || "en",
+  fallbackLng: "en",
 });
 
 export default i18next;

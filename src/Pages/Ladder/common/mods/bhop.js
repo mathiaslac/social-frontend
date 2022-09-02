@@ -1,10 +1,11 @@
-import { Fragment, useState, useEffect } from "react";
-import axios from "axios";
+import { Fragment } from "react";
+// import axios from "axios";
 import { useTranslation } from "react-i18next";
 import "../module.mods-grid.css";
-
+// import { useState, useEffect } from "react";
 const Bhop = () => {
   const { t } = useTranslation();
+  /*
   const [count, setCount] = useState([]);
 
   const getCount = () => {
@@ -18,6 +19,7 @@ const Bhop = () => {
   };
 
   useEffect(() => getCount(), []);
+  */
   return (
     <Fragment>
       <div

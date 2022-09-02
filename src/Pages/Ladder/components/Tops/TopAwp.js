@@ -22,11 +22,13 @@ const TopAwp = () => {
   const [players, setPlayers] = useState([]);
 
   const getPlayers = () => {
-    axios.get("http://localhost:5000/api/ranks/awp").then((response) => {
-      console.log(response.data);
-      const players = response.data;
-      setPlayers(players);
-    });
+    axios
+      .get("http://localhost:5000/api/servers/awp/ranks")
+      .then((response) => {
+        console.log(response.data);
+        const players = response.data;
+        setPlayers(players);
+      });
   };
 
   useEffect(() => getPlayers(), []);

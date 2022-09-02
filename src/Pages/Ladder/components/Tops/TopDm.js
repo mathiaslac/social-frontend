@@ -22,7 +22,7 @@ const TopDm = () => {
   const [players, setPlayers] = useState([]);
 
   const getPlayers = () => {
-    axios.get("http://localhost:5000/api/ranks/dm").then((response) => {
+    axios.get("http://localhost:5000/api/servers/dm/ranks").then((response) => {
       console.log(response.data);
       const players = response.data;
       setPlayers(players);
