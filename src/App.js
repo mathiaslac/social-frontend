@@ -1,7 +1,10 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import React, { lazy, Suspense, useContext, useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { Puff } from "react-loader-spinner";
 import "./App.css";
+import useLocalStorage from "./common/hooks/use-localstorage";
+import { check } from "./common/http/userAPI";
 
 import * as Layouts from "./layouts";
 
@@ -16,70 +19,82 @@ import {
   TopHns,
   TopRetake,
 } from "./Pages/Ladder/components/Tops";
-
-const Landing = lazy(() => import("./Pages/Landing/Landing"));
-const Donate = lazy(() => import("./Pages/Donate/Donate"));
-const Home = lazy(() => import("./Pages/Home/Home"));
-const Servers = lazy(() => import("./Pages/Servers/Servers"));
-const Events = lazy(() => import("./Pages/Events/Events"));
-const LeaderBoardLayout = lazy(() => import("./Pages/Ladder/Ladder"));
-const Leadboards = lazy(() => import("./Pages/Ladder/Leadboards"));
-const Chats = lazy(() => import("./Pages/Chats/Chats"));
+import { Context } from ".";
+import LeaderBoardLayout from "./Pages/Ladder/Ladder";
+import { allRoutes, authRoutes, loginRoute } from "./routes";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+  const { user } = useContext(Context);
+  const [jwt, setJwt] = useLocalStorage("jwtToken");
+
+  useEffect(() => {
+    if( typeof jwt === "undefined" )
+      return setLoading(false);
+
+    check()
+      .then((data) => {
+        user.setUser(data);
+        user.setIsAuth(true);
+        user.setGroup(data.group);
+      })
+      .catch((e) => {
+        console.log(e);
+        toast.error(e.response.data.message);
+        setJwt(undefined);
+      })
+      .finally(() => setLoading(false));
+  }, [user, setJwt, jwt]);
+
+  if (loading) {
+    return (
+      <div className="loader_screen">
+        <Puff color="#00BFFF" height={80} width={80} />
+      </div>
+    );
+  }
   return (
     <BrowserRouter>
       <ModalProvider>
+        <ToastContainer
+            theme="dark"
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
         <Routes>
           <Route path="/" element={<Layouts.Core />}>
-            <Route
-              path=""
-              element={
-                <Suspense fallback={null}>
-                  <Landing />
-                </Suspense>
-              }
-            />
-            <Route
-              path="home"
-              element={
-                <Suspense fallback={null}>
-                  <Home />
-                </Suspense>
-              }
-            />
-            <Route
-              path="donate"
-              element={
-                <Suspense fallback={null}>
-                  <Donate />
-                </Suspense>
-              }
-            />
-            <Route
-              path="chats"
-              element={
-                <Suspense fallback={null}>
-                  <Chats />
-                </Suspense>
-              }
-            />
-            <Route
-              path="servers"
-              element={
-                <Suspense fallback={null}>
-                  <Servers />
-                </Suspense>
-              }
-            />
-            <Route
-              path="leadboards"
-              element={
-                <Suspense fallback={null}>
-                  <Leadboards />
-                </Suspense>
-              }
-            />
+			      {user.isAuth && authRoutes.map(({path, Component}) => (
+                <Route key={path} path={path} element={
+                  <Suspense fallback={null}>
+                    <Component />
+                  </Suspense>
+                }
+              />
+            ))}
+            {!user.isAuth && loginRoute.map(({path, Component}) => (
+                <Route key={path} path={path} element={
+                  <Suspense fallback={null}>
+                    <Component />
+                  </Suspense>
+                }
+              />
+            ))}
+            {allRoutes.map(({path, Component}) => (
+                <Route key={path} path={path} element={
+                    <Suspense fallback={null}>
+                      <Component />
+                    </Suspense>
+                  }
+                />
+            ))}
+            <Route path="*" element={<NotFound />} />
             <Route path="leaderboard" element={<LeaderBoardLayout />}>
               <Route
                 path="awp"
@@ -122,30 +137,6 @@ const App = () => {
                 }
               />
             </Route>
-            <Route
-              path="events"
-              element={
-                <Suspense fallback={null}>
-                  <Events />
-                </Suspense>
-              }
-            />
-            <Route
-              path="76561198184313278"
-              element={
-                <Suspense fallback={null}>
-                  <Profiles />
-                </Suspense>
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <Suspense fallback={null}>
-                  <NotFound />
-                </Suspense>
-              }
-            />
           </Route>
         </Routes>
       </ModalProvider>

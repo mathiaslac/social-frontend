@@ -11,6 +11,12 @@ import Discord from "./Discord";
 import "./module.servers.css";
 import axios from "axios";
 
+/**
+ * 
+ * Sry, i can't to remake all this...
+ * 
+ */
+
 const Servers = () => {
   const [showAwp, setShowAwp] = useState(false);
   const [showRetake, setShowRetake] = useState(false);
@@ -23,17 +29,14 @@ const Servers = () => {
   const [AwpPlayer, setAwpPlayers] = useState([]);
 
   const [retakeServer, setRetakeServer] = useState([]);
-  const [RetakeRaw, setRetakeRaw] = useState([]);
   const [RetakePlayer, setRetakePlayers] = useState([]);
   const [RetakeBot, setRetakeBots] = useState([]);
 
   const [bhopServer, setBhopServer] = useState([]);
-  const [BhopRaw, setBhopRaw] = useState([]);
   const [BhopPlayer, setBhopPlayers] = useState([]);
   const [BhopBot, setBhopBots] = useState([]);
 
   const [hnsServer, setHnsServer] = useState([]);
-  const [HnsRaw, setHnsRaw] = useState([]);
   const [HnsPlayer, setHnsPlayers] = useState([]);
   const [HnsBot, setHnsBots] = useState([]);
 
@@ -81,13 +84,11 @@ const Servers = () => {
     axios
       .get("http://localhost:5000/api/servers/retake/info")
       .then((response) => {
-        const retakeServers = response.data.info;
+        const retakeServers = response;
         setRetakeServer(retakeServers);
-        const RetakeRaws = response.data.info.raw;
-        setRetakeRaw(RetakeRaws);
-        const RetakePlayers = response.data.info.players;
+        const RetakePlayers = response.players;
         setRetakePlayers(RetakePlayers);
-        const RetakeBots = response.data.info.bots;
+        const RetakeBots = response.bots;
         setRetakeBots(RetakeBots);
       });
   };
@@ -95,37 +96,33 @@ const Servers = () => {
     axios
       .get("http://localhost:5000/api/servers/bhop/info")
       .then((response) => {
-        const bhopServers = response.data.info;
+        const bhopServers = response;
         setBhopServer(bhopServers);
-        const BhopRaws = response.data.info.raw;
-        setBhopRaw(BhopRaws);
-        const BhopPlayers = response.data.info.players;
+        const BhopPlayers = response.players;
         setBhopPlayers(BhopPlayers);
-        const BhopBots = response.data.info.bots;
+        const BhopBots = response.bots;
         setBhopBots(BhopBots);
       });
   };
   const getHnsServer = () => {
     axios.get("http://localhost:5000/api/servers/hns/info").then((response) => {
-      const hnsServers = response.data.info;
+      const hnsServers = response;
       setHnsServer(hnsServers);
-      const HnsRaws = response.data.info.raw;
-      setHnsRaw(HnsRaws);
-      const HnsPlayers = response.data.info.players;
+      const HnsPlayers = response.players;
       setHnsPlayers(HnsPlayers);
-      const HnsBots = response.data.info.bots;
+      const HnsBots = response.bots;
       setHnsBots(HnsBots);
     });
   };
   const getDmServer = () => {
     axios.get("http://localhost:5000/api/servers/dm/info").then((response) => {
-      const dmServers = response.data.info;
+      const dmServers = response;
       setDmServer(dmServers);
-      const DmRaws = response.data.info.raw;
+      const DmRaws = response.raw;
       setDmRaw(DmRaws);
-      const DmPlayers = response.data.info.players;
+      const DmPlayers = response.players;
       setDmPlayers(DmPlayers);
-      const DmBots = response.data.info.bots;
+      const DmBots = response.bots;
       setDmBots(DmBots);
     });
   };
@@ -133,13 +130,13 @@ const Servers = () => {
     axios
       .get("http://localhost:5000/api/servers/comp/info")
       .then((response) => {
-        const compServers = response.data.info;
+        const compServers = response;
         setCompServer(compServers);
-        const CompRaws = response.data.info.raw;
+        const CompRaws = response.raw;
         setCompRaw(CompRaws);
-        const CompPlayers = response.data.info.players;
+        const CompPlayers = response.players;
         setCompPlayers(CompPlayers);
-        const CompBots = response.data.info.bots;
+        const CompBots = response.bots;
         setCompBots(CompBots);
       });
   };
@@ -156,38 +153,38 @@ const Servers = () => {
 
   const awpHeight = Math.round(awpServer.players * 100) / awpServer.maxplayers;
   const retakeHeight =
-    Math.round(RetakeRaw.numplayers * 100) / retakeServer.maxplayers;
+    Math.round(retakeServer.numplayers * 100) / retakeServer.maxplayers;
   const bhopHeight =
-    Math.round(BhopRaw.numplayers * 100) / bhopServer.maxplayers;
-  const hnsHeight = Math.round(HnsRaw.numplayers * 100) / hnsServer.maxplayers;
+    Math.round(bhopServer.numplayers * 100) / bhopServer.maxplayers;
+  const hnsHeight = Math.round(hnsServer.numplayers * 100) / hnsServer.maxplayers;
   const dmHeight = Math.round(DmRaw.numplayers * 100) / dmServer.maxplayers;
   const compHeight =
     Math.round(CompRaw.numplayers * 100) / compServer.maxplayers;
 
   const retakeCountClass = () => {
-    if (RetakeRaw.numplayers <= 4) {
+    if (retakeServer.numplayers <= 4) {
       document.getElementById("retakeProg").classList.add("green");
-    } else if (RetakeRaw.numplayers <= 7) {
+    } else if (retakeServer.numplayers <= 7) {
       document.getElementById("retakeProg").classList.add("orange");
-    } else if (RetakeRaw.numplayers <= 10) {
+    } else if (retakeServer.numplayers <= 10) {
       document.getElementById("retakeProg").classList.add("red");
     }
   };
   const bhopCountClass = () => {
-    if (BhopRaw.numplayers <= 6) {
+    if (bhopServer.numplayers <= 6) {
       document.getElementById("bhopProg").classList.add("green");
-    } else if (BhopRaw.numplayers <= 14) {
+    } else if (bhopServer.numplayers <= 14) {
       document.getElementById("bhopProg").classList.add("orange");
-    } else if (BhopRaw.numplayers <= 18) {
+    } else if (bhopServer.numplayers <= 18) {
       document.getElementById("bhopProg").classList.add("red");
     }
   };
   const hnsCountClass = () => {
-    if (HnsRaw.numplayers <= 6) {
+    if (hnsServer.numplayers <= 6) {
       document.getElementById("hnsProg").classList.add("green");
-    } else if (HnsRaw.numplayers <= 12) {
+    } else if (hnsServer.numplayers <= 12) {
       document.getElementById("hnsProg").classList.add("orange");
-    } else if (HnsRaw.numplayers <= 16) {
+    } else if (hnsServer.numplayers <= 16) {
       document.getElementById("hnsProg").classList.add("red");
     }
   };
@@ -237,9 +234,9 @@ const Servers = () => {
           <p>
             <span style={{ color: "#64b44d", marginRight: "5px" }}>
               {awpServer.players +
-                RetakeRaw.numplayers +
-                BhopRaw.numplayers +
-                HnsRaw.numplayers +
+                retakeServer.numplayers +
+                bhopServer.numplayers +
+                hnsServer.numplayers +
                 DmRaw.numplayers +
                 CompRaw.numplayers}
             </span>
@@ -383,7 +380,7 @@ const Servers = () => {
                 style={{ height: retakeHeight + "%" }}
               ></div>
             </div>
-            {RetakeRaw.numplayers}/ {retakeServer.maxplayers}
+            {retakeServer.numplayers}/ {retakeServer.maxplayers}
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
@@ -500,17 +497,6 @@ const Servers = () => {
             </div>
           </div>
         </Modal>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
         <div className="server-row" onClick={() => setShowBhop(true)}>
           <img
             className="server-row__bg"
@@ -528,7 +514,7 @@ const Servers = () => {
                 style={{ height: bhopHeight + "%" }}
               ></div>
             </div>
-            {BhopRaw.numplayers}/ {bhopServer.maxplayers}
+            {bhopServer.numplayers}/ {bhopServer.maxplayers}
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
@@ -662,7 +648,7 @@ const Servers = () => {
                 style={{ height: hnsHeight + "%" }}
               ></div>
             </div>
-            {HnsRaw.numplayers}/ {hnsServer.maxplayers}
+            {hnsServer.numplayers}/ {hnsServer.maxplayers}
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />

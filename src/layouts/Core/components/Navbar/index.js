@@ -4,7 +4,7 @@ import "./module.modal-chat.css";
 import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 
 import axios from "axios";
 
@@ -14,6 +14,10 @@ import LangSwitcher from "../../../../common/components/LangSwitcher/LangSwitche
 // import LangSwitcher from "../../../../common/components/LangSwitcher/LangSwitcher";
 
 import NoNotificationsSvg from "./Svg/NoNotificationsSvg";
+import { Context } from "../../../..";
+import { API_URL } from "../../../../util/consts";
+import { toast } from "react-toastify";
+import jwtDecode from "jwt-decode";
 
 window.onload = function () {};
 
@@ -53,15 +57,72 @@ window.onclick = function (event) {
 
 const Navbar = (props) => {
   const [credits, setCredits] = useState([]);
+  const { user } = useContext(Context);
 
   const getCredits = () => {
-    axios
-      .get("http://localhost:5000/api/shop/STEAM_1:1:245043825")
-      .then((response) => {
-        const count = response.data[0];
-        setCredits(count);
-      });
+    if (user.isAuth) {
+      axios
+        .get("http://localhost:5000/api/shop/STEAM_1:1:245043825")
+        .then((response) => {
+          const count = response.data[0];
+          setCredits(count);
+        });
+    }
   };
+
+    const [modal, setMState] = useState(false);
+
+    const toastHandle = (error) => {
+        toast.error(error, {
+            position: toast.POSITION.BOTTOM_RIGHT
+        });
+    };
+
+    const handleLogin = () => {
+
+        // Создание окна
+        const popupWindow = window.open(
+            API_URL + "/api/auth/login",
+            "_blank",
+            "width=800, height=600",
+        );
+
+        // Открываем окно с "Авторизуйтесь в новом окне"
+        setMState(true);
+
+        // Фокус на новом окне
+        if (window.focus) popupWindow.focus();
+
+        // Интервал для закрытия окна с логином
+        let popupTick = setInterval(function() {
+            if (popupWindow.closed) {
+                clearInterval(popupTick);
+                setMState(false);
+            }
+        }, 500);
+    };
+
+    useMemo(() => {
+      window.onmessage = (event) => {
+          if (event.origin !== API_URL) return;
+          const { token, ok, error } = event.data;
+          if (ok && token) {
+            try {
+              let data = jwtDecode(token);
+              console.log(data);
+              toast.success("Auth success!");
+              user.setUser(data)
+              user.setIsAuth(true)
+              user.setGroup(data.group)
+              localStorage.setItem("jwtToken", token);
+            } catch(e) {
+              toast.error("Somethings wrong :(");
+            }
+          } else {
+              toastHandle(error);
+          }
+      };
+    }, [user]);
 
   useEffect(() => getCredits(), []);
   const { t } = useTranslation();
@@ -179,52 +240,56 @@ const Navbar = (props) => {
           </NavLink>
         </ul>
         <div className="header__userNotificationGroup">
-          <Link to="/76561198184313278">
-            <div
-              className="header__userAvatarNameWrapper"
-              style={{ display: "flex" }}
-            >
-              <span
-                className="ideas-avatar ideas-avatar-circle ideas-avatar-image"
-                style={{ height: "40px", width: "40px", fontSize: "40px" }}
+          {user.isAuth ? (
+            <Link to="/76561198184313278">
+              <div
+                className="header__userAvatarNameWrapper"
+                style={{ display: "flex" }}
               >
-                <img
-                  src="assets/img/steamUser.png"
-                  alt="Avatar"
-                  style={{ height: "100%", width: "100%" }}
-                />
-              </span>
-              <div>
-                <span className="ideas-typography ideas-typography-ellipsis ideas-typography-ellipsis-single-line header__userAvatarName">
-                  Snooze
-                </span>
-                <span className="userAvatarName__balance fade">
+                <span
+                  className="ideas-avatar ideas-avatar-circle ideas-avatar-image"
+                  style={{ height: "40px", width: "40px", fontSize: "40px" }}
+                >
                   <img
-                    src="assets/img/svg/navbar/Credits.svg"
-                    alt="credits"
-                    style={{
-                      height: "16px",
-                      width: "16px",
-                      marginRight: "4px",
-                      verticalAlign: "text-top",
-                    }}
+                    src="assets/img/steamUser.png"
+                    alt="Avatar"
+                    style={{ height: "100%", width: "100%" }}
                   />
-                  <span className="userAvatarName__balanceNumber">
-                    <span className="userAvatarName__balanceDigit">
-                      {String(credits.money).replace(
-                        /(.)(?=(\d{3})+$)/g,
-                        "$1,"
-                      )}
-                    </span>
-                    <span className="userAvatarName__balanceCoins">
-                      {" "}
-                      credits
+                </span>
+                <div>
+                  <span className="ideas-typography ideas-typography-ellipsis ideas-typography-ellipsis-single-line header__userAvatarName">
+                    Snooze
+                  </span>
+                  <span className="userAvatarName__balance fade">
+                    <img
+                      src="assets/img/svg/navbar/Credits.svg"
+                      alt="credits"
+                      style={{
+                        height: "16px",
+                        width: "16px",
+                        marginRight: "4px",
+                        verticalAlign: "text-top",
+                      }}
+                    />
+                    <span className="userAvatarName__balanceNumber">
+                      <span className="userAvatarName__balanceDigit">
+                        {String(credits.money).replace(
+                          /(.)(?=(\d{3})+$)/g,
+                          "$1,"
+                        )}
+                      </span>
+                      <span className="userAvatarName__balanceCoins">
+                        {" "}
+                        credits
+                      </span>
                     </span>
                   </span>
-                </span>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          ) : (
+            <button onClick={handleLogin}>123</button>
+          )}
           <Link to="/chats">
             <svg
               className="ideas-dropdown-trigger dropChats messages-menu pointer"
