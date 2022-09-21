@@ -288,7 +288,7 @@ const Navbar = (props) => {
               </div>
             </Link>
           ) : (
-            <button onClick={handleLogin}>123</button>
+            <button className="login-btn" onClick={handleLogin}>Login via Steam</button>
           )}
           <Link to="/chats">
             <svg
