@@ -1,0 +1,9 @@
+export const AUTH_ROUTE = "/login";
+export const HOME_ROUTE = "/home";
+export const INDEX_ROUTE = "/";
+export const SERVERS_ROUTE = "/servers";
+export const LEADBOARDS_ROUTE = "/leadboards";
+export const EVENTS_ROUTE = "/events";
+export const DONATE_ROUTE = "/donate";
+export const CHATS_ROUTE = "/chats";
+export const API_URL = "http://localhost:5000";
