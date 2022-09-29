@@ -38,6 +38,7 @@ const Servers = () => {
   const getAwpServer = () => {
     axios.get("http://localhost:5000/api/servers/awp/info").then((response) => {
       const awpServers = response.data;
+      console.log(awpServers);
       setAwpServer(awpServers);
     });
   };
@@ -46,6 +47,7 @@ const Servers = () => {
       .get("http://localhost:5000/api/servers/awp/players")
       .then((response) => {
         const AwpPlayers = response.data;
+        console.log(AwpPlayers);
         setAwpPlayers(AwpPlayers);
       });
   };
@@ -100,7 +102,7 @@ const Servers = () => {
                 style={{ height: awpHeight + "%" }}
               ></div>
             </div>
-            {awpServer.players}/{awpServer.maxplayers}
+            {awpServer.players}/{awpServer.max_players}
           </div>
           <div className="server-row__ping">
             <img src="assets/img/svg/servers/chart_green.svg" alt="ping" />
@@ -172,11 +174,7 @@ const Servers = () => {
                             {Player.name}
                           </th>
                           <th>{Player.score}</th>
-                          <th>
-                            {new Date(Player.time * 1000)
-                              .toISOString()
-                              .substring(11, 19)}
-                          </th>
+                          <th>{Player.time}</th>
                         </tr>
                       ))}
                   </tbody>

@@ -28,7 +28,7 @@ class Clock extends Component {
   render() {
     return (
       <div className="head__timer">
-        <span>Timer</span>
+        <span>Season</span>
         <div className="timer-card">
           <img src="../assets/img/icons/watch.svg" alt="timer-icons" />
           <div className="timer">

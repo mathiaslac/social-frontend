@@ -8,37 +8,37 @@ const ServersModes = [
   {
     id: "awp",
     modeName: "AWP",
-    icon: "../assets/img/svg/servers/awp.svg",
+    img: "../assets/img/mods/AWP.webp",
     modeType: "Entertainment mode",
   },
   {
     id: "bhop",
     modeName: "BHOP",
-    icon: "../assets/img/svg/servers/bhop.svg",
+    img: "../assets/img/mods/BHOP.jpg",
     modeType: "Entertainment mode",
   },
   {
     id: "comp",
     modeName: "COMPETITIVE",
-    icon: "../assets/img/svg/servers/comp.svg",
+    img: "../assets/img/mods/COMP.jpg",
     modeType: "Training Mode",
   },
   {
     id: "dm",
     modeName: "DM",
-    icon: "../assets/img/svg/servers/dm.svg",
+    img: "../assets/img/mods/DM.jpg",
     modeType: "Training Mode",
   },
   {
     id: "hns",
     modeName: "HIDE & SEEK",
-    icon: "../assets/img/svg/servers/hns.svg",
+    img: "../assets/img/mods/HNS.webp",
     modeType: "Entertainment mode",
   },
   {
     id: "retake",
     modeName: "RETAKE",
-    icon: "../assets/img/svg/servers/retake.svg",
+    img: "../assets/img/mods/RETAKE.webp",
     modeType: "Training Mode",
   },
 ];
@@ -63,42 +63,51 @@ const ModesMenu = () => {
       }}
     >
       <SeasonTimer />
-      <div className="scroll__top">
-        <ul className="servers-modes">
-          {ServersModes.map(({ id, modeName, icon, modeType }, i) => (
-            <motion.li
-              key={id}
-              initial={{
-                opacity: 0,
-                transform: "translateY(20px)",
-              }}
-              animate={{
-                opacity: 1,
-                transform: "translateY(0px)",
-              }}
-              transition={{
-                duration: 0.07,
-                delay: i * 0.07,
-              }}
-              style={{
-                transition: "opacity 400ms ease 0s, transform 400ms ease 0s",
-                marginBottom: "5px",
-              }}
-            >
-              <Link to={`/leadboards/${id}`}>
-                <div className="div-modes">
-                  <div className="modes-onediv">
-                    <img src={icon} alt={modeName} />
-                  </div>
-                  <div>
-                    <h6 className="server-name">{modeName}</h6>
-                    <span className="mode-type">{modeType}</span>
-                  </div>
-                </div>
-              </Link>
-            </motion.li>
-          ))}
-        </ul>
+      <div className="lbPage__games__banner">
+        {ServersModes.map(({ id, modeName, img, modeType }, i) => (
+          <motion.div
+            key={id}
+            className="ideas-col ideas-col-xs-12 ideas-col-md-12 ideas-col-lg-12"
+            initial={{
+              opacity: 0,
+              transform: "translateY(20px)",
+            }}
+            animate={{
+              opacity: 1,
+              transform: "translateY(0px)",
+            }}
+            transition={{
+              duration: 0.07,
+              delay: i * 0.07,
+            }}
+            style={{
+              transition: "opacity 400ms ease 0s, transform 400ms ease 0s",
+              marginBottom: "5px",
+            }}
+          >
+            <Link to={`/leadboards/${id}`}>
+              <div className="gamecover-card-container__banner clickable">
+                <div
+                  className="gamecover-card-img__banner"
+                  style={{
+                    backgroundImage: `url(${img})`,
+                    backgroundPosition: "0px -63.5949px",
+                    backgroundSize: "494.872px 278.118px",
+                  }}
+                ></div>
+                <h1 className="ideas-typography gamecover-title__banner">
+                  {modeName}
+                </h1>
+                <article
+                  className="ideas-typography gamecover-playerCount__banner"
+                  style={{ color: "rgb(129, 134, 155)" }}
+                >
+                  {modeType}
+                </article>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
       </div>
     </motion.div>
   );

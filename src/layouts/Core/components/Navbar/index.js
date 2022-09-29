@@ -246,7 +246,7 @@ const Navbar = (props) => {
         <div className="header__userNotificationGroup">
           {user.isAuth ? (
             <div className="loggedin-flex-nav">
-              <Link to={user.user.steamid64}>
+              <Link to={`/profile/${user.user.steamid64}`}>
                 <div
                   className="header__userAvatarNameWrapper"
                   style={{ display: "flex" }}

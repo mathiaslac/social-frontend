@@ -39,7 +39,7 @@ const SearchBar = () => {
           {suggestions &&
             suggestions.slice(0, 9).map((suggestion, i) => (
               <div className="sugg__search" key={i}>
-                <Link to={`/${suggestion.steamid}`}>
+                <Link to={`/prfoile/${suggestion.steamid}`}>
                   <div className="sugg__playername">
                     {suggestion.playername}
                   </div>

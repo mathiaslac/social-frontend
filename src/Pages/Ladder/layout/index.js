@@ -9,9 +9,7 @@ const RightFeed = () => {
         position: "sticky",
         top: "0px",
         alignSelf: "flex-start",
-        background: "rgb(19, 24, 33)",
         borderRadius: "10px",
-        padding: "26px",
       }}
     >
       <ModesMenu />

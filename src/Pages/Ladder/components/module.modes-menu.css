@@ -52,3 +52,106 @@
   font-size: 12px;
   color: rgb(119, 133, 151);
 }
+
+.lbPage__games__banner {
+  margin-bottom: 20px;
+}
+.ideas-col-lg-12 {
+  display: block;
+  -webkit-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.ideas-col-xs-12 {
+  display: block;
+  -webkit-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.ideas-col {
+  position: relative;
+  max-width: 93%;
+  min-height: 1px;
+}
+.gamecover-card-container__banner {
+  background-color: #13151c;
+  -webkit-align-content: center;
+  align-content: center;
+  height: 144px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 23px;
+}
+.gamecover-card-img__banner,
+.gamecover-card__banner {
+  background-color: #13151c;
+  border-radius: 8px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.gamecover-card-img__banner {
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(-15%, transparent),
+    color-stop(150%, #000)
+  );
+  -webkit-mask-image: -webkit-linear-gradient(
+    bottom,
+    transparent -15%,
+    #000 150%
+  );
+  mask-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(-15%, transparent),
+    color-stop(150%, #000)
+  );
+  mask-image: linear-gradient(0deg, transparent -15%, #000 150%);
+}
+.ideas-typography h1,
+h1.ideas-typography {
+  margin-bottom: 0.5em;
+  color: #fff;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.23;
+}
+
+.ideas-typography {
+  overflow-wrap: break-word;
+}
+.gamecover-title__banner {
+  width: 170%;
+  left: 25px;
+  top: 25px;
+}
+.gamecover-title__banner,
+.gamecover-title__cover {
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ideas-typography {
+  color: #fff;
+}
+.ideas-typography {
+  overflow-wrap: break-word;
+}
+
+.gamecover-friends__cover,
+.gamecover-playerCount__banner {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+}
+.gamecover-playerCount__banner {
+  left: 25px;
+  top: 60px;
+}
