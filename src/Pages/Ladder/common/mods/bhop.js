@@ -1,10 +1,8 @@
 import { Fragment } from "react";
 // import axios from "axios";
-import { useTranslation } from "react-i18next";
 import "../module.mods-grid.css";
 // import { useState, useEffect } from "react";
 const Bhop = () => {
-  const { t } = useTranslation();
   /*
   const [count, setCount] = useState([]);
 
@@ -45,7 +43,7 @@ const Bhop = () => {
             <span style={{ color: "rgb(116, 209, 24)", marginRight: "5px" }}>
               1438
             </span>
-            {t("leadboards-playersRanked")}
+            players ranked
           </article>
         </div>
       </div>

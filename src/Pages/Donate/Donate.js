@@ -1,263 +1,204 @@
-import React, { Fragment } from "react";
-import "./module.donate.css";
+import { Fragment, useState, useContext, useMemo } from "react";
+import jwtDecode from "jwt-decode";
+import "./module.vip.css";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
+import { API_URL } from "../../util/consts";
+import { toast } from "react-toastify";
+import { Context } from "../../index";
+import Modal from "../../components/posts/AddPost/Modal/Modal";
 
-import DotsSvg from "./Svg/DotsSvg";
+const Donate = () => {
+  const [showDonate, setShowDonate] = useState(false);
+  const { user } = useContext(Context);
+  const [modal, setMState] = useState(false);
+  const toastHandle = (error) => {
+    toast.error(error, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  };
+  const handleLogin = () => {
+    // Creating a window
+    const popupWindow = window.open(
+      API_URL + "/api/auth/login",
+      "_blank",
+      "width=800, height=600"
+    );
 
-import { ReactComponent as BlueTick } from "./Svg/blue-tick.svg";
-import { ReactComponent as OrangeTick } from "./Svg/orange-tick.svg";
-import { ReactComponent as GrayTick } from "./Svg/gray-tick.svg";
+    // Open the window with "Authorise in new window"
+    setMState(true);
 
-const activatedColor = { color: "#fff" };
-const disabledColor = { color: "#838C98" };
+    // Focus on a new window
+    if (window.focus) popupWindow.focus();
 
-const plans = [
-  {
-    id: "starter",
-    title: "Premium",
-    icon: "assets/img/svg/prem/premium-header.svg",
-    color: "#212533",
-    description:
-      "Custom Message for Premium Package which you can edit from the admin panel.",
-    price: {
-      value: 2.99,
-      currency: "€",
-      per: "month",
-    },
-    tick: <OrangeTick />,
-    bgClass: "bg-premium btn text-uppercase text-white bold",
-    features: {
-      skinchanger: true,
-      reservdslot: true,
-      noads: true,
-      premtag: true,
-      awpimmun: true,
-      dropskins: false,
-      missions: false,
-      streamers: false,
-      xpmutlip: false,
-      support: false,
-      nickchange: false,
-    },
-  },
-  {
-    id: "hot",
-    title: "Diamond",
-    icon: "assets/img/svg/prem/diamond-header.svg",
-    color: "#212533",
-    description:
-      "Custom Message for Diamond Package which you can edit from the admin panel.",
-    price: {
-      value: 4.99,
-      currency: "€",
-      per: "month",
-    },
-    tick: <BlueTick />,
-    bgClass: "bg-diamond btn text-uppercase text-white bold",
-    features: {
-      skinchanger: true,
-      reservdslot: true,
-      noads: true,
-      premtag: true,
-      awpimmun: true,
-      dropskins: true,
-      missions: true,
-      streamers: true,
-      xpmutlip: true,
-      support: true,
-      nickchange: true,
-    },
-  },
-];
+    // Interval for closing the login window
+    let popupTick = setInterval(function () {
+      if (popupWindow.closed) {
+        clearInterval(popupTick);
+        setMState(false);
+      }
+    }, 500);
+  };
+  useMemo(() => {
+    window.onmessage = (event) => {
+      if (event.origin !== API_URL) return;
+      const { token, ok, error } = event.data;
+      if (ok && token) {
+        try {
+          let data = jwtDecode(token);
+          console.log(data);
+          toast("Auth success !", {
+            position: "top-center",
+            icon: (
+              <img
+                src="../../assets/img/svg/servers/success-alert.svg"
+                alt="success"
+              />
+            ),
+            autoClose: 2000,
+            closeButton: false,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          user.setUser(data);
+          user.setIsAuth(true);
+          user.setGroup(data.group);
+          localStorage.setItem("jwtToken", token);
+        } catch (e) {
+          toast("Somethings wrong :(", {
+            position: "top-center",
+            icon: (
+              <img
+                src="../../assets/img/svg/servers/success-alert.svg"
+                alt="success"
+              />
+            ),
+            autoClose: 2000,
+            closeButton: false,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      } else {
+        toastHandle(error);
+      }
+    };
+  }, [user]);
 
-const Shop = () => (
-  <Fragment>
-    <Helmet>
-      <title>Ideas - Premium</title>
-    </Helmet>
-    <div className="wrap">
-      <div id="routerpages">
-        <div className="premium-page">
-          <div className="premium__first-screen">
-            <h1 className="premium__title">
-              IDEAS <span>subscription</span>
-            </h1>
-            <p className="premium__sub-title">
-              Pro Packages. Choose the Plan That's Right for You.
-            </p>
-            <div className="premium__main-plans">
-              {plans.map(
-                (
-                  { id, icon, color, title, price, features, tick, bgClass },
-                  i
-                ) => (
-                  <motion.div
-                    key={id}
-                    initial={{
-                      opacity: 0,
-                      transform: "translateY(20px)",
-                    }}
-                    animate={{
-                      opacity: 1,
-                      transform: "translateY(0px)",
-                    }}
-                    transition={{
-                      duration: 0.07,
-                      delay: i * 0.07,
-                    }}
-                    className="col-md-12 col-lg-6 px-lg-4"
-                    style={{
-                      transition:
-                        "opacity 400ms ease 0s, transform 400ms ease 0s",
-                    }}
-                  >
-                    <div
-                      className="content shadow-none mt-5 position-relative pro_plan"
-                      style={{
-                        color,
-                        padding: "10px",
-                      }}
-                    >
-                      <div className="position-relative pro_plan_head">
-                        <img src={icon} alt={title} />
-                      </div>
-                      <div className="position-relative valign pro_plan_price">
-                        <h3>
-                          {" "}
-                          {price.value}
-                          {price.currency}{" "}
-                        </h3>
-                        &nbsp;&nbsp;
-                        <span className="bold">{price.per}</span>
-                      </div>
-                      <div className="pro_plan_info">
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.skinchanger
-                              ? activatedColor
-                              : disabledColor
-                          }
-                        >
-                          {features.skinchanger ? tick : <GrayTick />}
-                          &nbsp;&nbsp;SKINCHANGER
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.reservdslot
-                              ? activatedColor
-                              : disabledColor
-                          }
-                        >
-                          {features.reservdslot ? tick : <GrayTick />}
-                          &nbsp;&nbsp;Reserve slot
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.noads ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.noads ? tick : <GrayTick />}
-                          &nbsp;&nbsp;No ads
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.premtag ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.premtag ? tick : <GrayTick />}
-                          &nbsp;&nbsp;PREMIUM tag
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.awpimmun ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.awpimmun ? tick : <GrayTick />}
-                          &nbsp;&nbsp;Immunity to AWP restriction
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.dropskins ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.dropskins ? tick : <GrayTick />}
-                          &nbsp;&nbsp;Drop skins
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.missions ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.missions ? tick : <GrayTick />}
-                          &nbsp;&nbsp;Missions
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.streamers ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.streamers ? tick : <GrayTick />}
-                          &nbsp;&nbsp;Games with streamers and PRO-players
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.xpmutlip ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.xpmutlip ? tick : <GrayTick />}
-                          &nbsp;&nbsp;Experience multiplier
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.support ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.support ? tick : <GrayTick />}
-                          &nbsp;&nbsp;Priority support
-                        </div>
-                        <div
-                          className="mb--shop"
-                          style={
-                            features.nickchange ? activatedColor : disabledColor
-                          }
-                        >
-                          {features.nickchange ? tick : <GrayTick />}
-                          &nbsp;&nbsp;Nickname change every 3 months
-                        </div>
-                      </div>
-                      <div
-                        className="position-relative mt40 pro_plan_foot"
-                        style={{ padding: "0px 30px 30px", cursor: "pointer" }}
-                      >
-                        <button
-                          className={bgClass}
-                          style={{ cursor: "pointer" }}
-                        >
-                          Subscribe
-                        </button>
-                      </div>
-                      <DotsSvg />
-                    </div>
-                  </motion.div>
-                )
-              )}
+  return (
+    <Fragment>
+      <Helmet>
+        <title>Ideas - Premium</title>
+      </Helmet>
+      <div className="vip--container">
+        {user.isAuth ? (
+          <button
+            onClick={() => setShowDonate(true)}
+            to="/dashboard/premiums"
+            className="ideas-btn ideas-btn-primary postUploader__btn"
+            style={{ background: "#ffb229", width: 200 }}
+          >
+            <img
+              alt="test-img"
+              src="../../assets/img/svg/dashboard/crown.svg"
+              height="14"
+              width="14"
+            />
+            <span>Donate</span>
+          </button>
+        ) : (
+          <div className="vip--container">
+            <p>To access this page you have to </p>
+            <button className="login-button" onClick={handleLogin}>
+              <img
+                className="steam-icon-login"
+                src="../../assets/img/svg/servers/steam-logo.svg"
+                alt="steam-logo"
+                width={18}
+                height={18}
+              />
+              Login with Steam
+            </button>
+          </div>
+        )}
+      </div>
+      <Modal onClose={() => setShowDonate(false)} show={showDonate}>
+        {user.isAuth ? (
+          <div id="user-is-auth" className="ideas-modal-content">
+            <div className="ideas-modal-header">
+              <div className="ideas-modal-title" id="rcDialogTitle0">
+                <div className="modal__title modal__title--withClose">
+                  Donate
+                </div>
+              </div>
+            </div>
+            <div className="ideas-modal-body">
+              <button
+                className="ideas-btn ideas-btn-primary postUploader__btn"
+                style={{ background: "#ffb229", width: "100%" }}
+              >
+                <img
+                  alt="test-img"
+                  src="../../assets/img/svg/dashboard/crown.svg"
+                  height="14"
+                  width="14"
+                />
+
+                <span>Donate</span>
+              </button>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </Fragment>
-);
+        ) : (
+          <div id="user-isnot-auth" className="ideas-modal-content">
+            <div className="ideas-modal-header">
+              <div className="ideas-modal-title" id="rcDialogTitle0">
+                <div className="modal__title modal__title--withClose">
+                  Login First
+                </div>
+              </div>
+            </div>
+            <div className="ideas-modal-body">
+              <img
+                onClick={() => setShowDonate(false)}
+                alt="test-img"
+                height="24"
+                width="24"
+                className="modal__closeIcon"
+                src="https://d14eu5yur8w3te.cloudfront.net/cstatic/icons/CloseWithBackground.svg"
+              />
+              <div style={{ width: "100%", position: "relative" }}>
+                <div className="post-creator_postCreator__uploader__wrapper__2ELby">
+                  <span>
+                    <div className="post-creator_postCreator__uploader__3Jsdv">
+                      <div className="login-center-modal">
+                        <button className="login-button" onClick={handleLogin}>
+                          <img
+                            className="steam-icon-login"
+                            src="../../assets/img/svg/servers/steam-logo.svg"
+                            alt="steam-logo"
+                            width={18}
+                            height={18}
+                          />
+                          Login with Steam
+                        </button>
+                      </div>
+                    </div>
+                  </span>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
+    </Fragment>
+  );
+};
 
-export default Shop;
+export default Donate;

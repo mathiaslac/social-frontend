@@ -177,9 +177,8 @@
   padding-left: 1.5rem !important;
 }
 .col-lg-6 {
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .content {
   background-color: var(--color-dark);

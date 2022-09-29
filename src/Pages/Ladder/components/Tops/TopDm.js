@@ -11,8 +11,8 @@ const YourPlace = [
     nickname: "Snooze",
     posNum: "1784",
     kdr: "2,00",
-    userImg: "assets/img/steamUser.png",
-    rankImg: "assets/img/ranks/1.svg",
+    userImg: "../assets/img/steamUser.png",
+    rankImg: "../assets/img/ranks/1.svg",
     points: 35,
     kills: 2,
     deaths: 0,
@@ -23,7 +23,6 @@ const TopDm = () => {
 
   const getPlayers = () => {
     axios.get("http://localhost:5000/api/servers/dm/ranks").then((response) => {
-      console.log(response.data);
       const players = response.data;
       setPlayers(players);
     });
@@ -108,7 +107,7 @@ const TopDm = () => {
                   >
                     <div>
                       <img
-                        src={`assets/img/svg/place/${index + 1}.svg`}
+                        src={`../assets/img/svg/place/${index + 1}.svg`}
                         onError={(event) =>
                           (event.target.style.display = "none")
                         }
@@ -132,7 +131,7 @@ const TopDm = () => {
                   <td className="img-mlt pointer">
                     <img
                       className="rank-img"
-                      src={`assets/img/ranks/${player.rank}.svg`}
+                      src={`../assets/img/ranks/${player.rank}.svg`}
                       alt="rank-img"
                     />
                   </td>

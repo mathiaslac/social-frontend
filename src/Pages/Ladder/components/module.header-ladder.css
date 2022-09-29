@@ -10,6 +10,9 @@
   align-items: flex-start;
   margin-bottom: 19px;
 }
+.uppercase {
+  text-transform: uppercase;
+}
 .h1-header {
   font-weight: 700;
   font-size: 40px;

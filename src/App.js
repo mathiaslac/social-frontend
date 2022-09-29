@@ -1,5 +1,5 @@
-import React, { lazy, Suspense, useContext, useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React, { Suspense, useContext, useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { Puff } from "react-loader-spinner";
 import "./App.css";
@@ -7,10 +7,11 @@ import useLocalStorage from "./common/hooks/use-localstorage";
 import { check } from "./common/http/userAPI";
 
 import * as Layouts from "./layouts";
+import * as Dashboard from "./Pages/Dashboard";
 
 import { ModalProvider } from "./modules/modal";
 
-import { NotFound, Profiles } from "./Pages/index";
+import { NotFound } from "./Pages/index";
 
 import {
   TopAwp,
@@ -21,7 +22,16 @@ import {
 } from "./Pages/Ladder/components/Tops";
 import { Context } from ".";
 import LeaderBoardLayout from "./Pages/Ladder/Ladder";
-import { allRoutes, authRoutes, loginRoute } from "./routes";
+import {
+  allRoutes,
+  authRoutes,
+  loginRoute,
+  g_1Routes,
+  g_2Routes,
+  g_3Routes,
+  g_4Routes,
+  tops_Routes,
+} from "./routes";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -29,8 +39,7 @@ const App = () => {
   const [jwt, setJwt] = useLocalStorage("jwtToken");
 
   useEffect(() => {
-    if( typeof jwt === "undefined" )
-      return setLoading(false);
+    if (typeof jwt === "undefined") return setLoading(false);
 
     check()
       .then((data) => {
@@ -57,86 +66,122 @@ const App = () => {
     <BrowserRouter>
       <ModalProvider>
         <ToastContainer
-            theme="dark"
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
+          theme="dark"
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
         />
         <Routes>
           <Route path="/" element={<Layouts.Core />}>
-			      {user.isAuth && authRoutes.map(({path, Component}) => (
-                <Route key={path} path={path} element={
-                  <Suspense fallback={null}>
-                    <Component />
-                  </Suspense>
-                }
-              />
-            ))}
-            {!user.isAuth && loginRoute.map(({path, Component}) => (
-                <Route key={path} path={path} element={
-                  <Suspense fallback={null}>
-                    <Component />
-                  </Suspense>
-                }
-              />
-            ))}
-            {allRoutes.map(({path, Component}) => (
-                <Route key={path} path={path} element={
+            <Route path="/leadboards" element={<LeaderBoardLayout />}>
+              {tops_Routes.map(({ path, Component }) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={
                     <Suspense fallback={null}>
                       <Component />
                     </Suspense>
                   }
                 />
+              ))}
+            </Route>
+            <Route path="/dashboard" element={<Dashboard.Core />}>
+              {user.isAuth &&
+                user.user.group === 1 &&
+                g_1Routes.map(({ path, Component }) => (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={
+                      <Suspense fallback={null}>
+                        <Component />
+                      </Suspense>
+                    }
+                  />
+                ))}
+              {user.isAuth &&
+                user.user.group === 2 &&
+                g_2Routes.map(({ path, Component }) => (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={
+                      <Suspense fallback={null}>
+                        <Component />
+                      </Suspense>
+                    }
+                  />
+                ))}
+              {user.isAuth &&
+                user.user.group === 3 &&
+                g_3Routes.map(({ path, Component }) => (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={
+                      <Suspense fallback={null}>
+                        <Component />
+                      </Suspense>
+                    }
+                  />
+                ))}
+              {user.isAuth &&
+                user.user.group === 4 &&
+                g_4Routes.map(({ path, Component }) => (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={
+                      <Suspense fallback={null}>
+                        <Component />
+                      </Suspense>
+                    }
+                  />
+                ))}
+            </Route>
+            {user.isAuth &&
+              authRoutes.map(({ path, Component }) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={
+                    <Suspense fallback={null}>
+                      <Component />
+                    </Suspense>
+                  }
+                />
+              ))}
+            {!user.isAuth &&
+              loginRoute.map(({ path, Component }) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={
+                    <Suspense fallback={null}>
+                      <Component />
+                    </Suspense>
+                  }
+                />
+              ))}
+            {allRoutes.map(({ path, Component }) => (
+              <Route
+                key={path}
+                path={path}
+                element={
+                  <Suspense fallback={null}>
+                    <Component />
+                  </Suspense>
+                }
+              />
             ))}
             <Route path="*" element={<NotFound />} />
-            <Route path="leaderboard" element={<LeaderBoardLayout />}>
-              <Route
-                path="awp"
-                element={
-                  <Suspense fallback={null}>
-                    <TopAwp />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="dm"
-                element={
-                  <Suspense fallback={null}>
-                    <TopDm />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="hns"
-                element={
-                  <Suspense fallback={null}>
-                    <TopHns />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="retake"
-                element={
-                  <Suspense fallback={null}>
-                    <TopRetake />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="comp"
-                element={
-                  <Suspense fallback={null}>
-                    <TopComp />
-                  </Suspense>
-                }
-              />
-            </Route>
           </Route>
         </Routes>
       </ModalProvider>

@@ -525,3 +525,15 @@
   top: 0;
   right: 14px;
 }
+
+.update-post {
+  border: 2px solid #3b69b2;
+  border-radius: 8px;
+}
+.update-post-color {
+  color: #3b69b2;
+}
+.update-post-avatar {
+  border: 3px solid #3b69b2;
+  border-radius: 50%;
+}

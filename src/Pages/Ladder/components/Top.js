@@ -11,8 +11,8 @@ const YourPlace = [
     nickname: "Snooze",
     posNum: "1784",
     kdr: "2,00",
-    userImg: "assets/img/steamUser.png",
-    rankImg: "assets/img/ranks/1.svg",
+    userImg: "../assets/img/steamUser.png",
+    rankImg: "../assets/img/ranks/1.svg",
     points: 35,
     kills: 2,
     deaths: 0,
@@ -110,7 +110,7 @@ const TopAwp = () => {
                   >
                     <div className="rankIcon">
                       <img
-                        src={`assets/img/svg/place/new/rank.svg`}
+                        src={`../assets/img/svg/place/new/rank.svg`}
                         onError={(event) =>
                           (event.target.style.display = "none")
                         }
@@ -118,7 +118,7 @@ const TopAwp = () => {
                       />
                       <img
                         className="rankImg"
-                        src={`assets/img/svg/place/new/${index + 1}.svg`}
+                        src={`../assets/img/svg/place/new/${index + 1}.svg`}
                         onError={(event) =>
                           (event.target.style.display = "none")
                         }
@@ -142,7 +142,7 @@ const TopAwp = () => {
                   <td className="img-mlt pointer">
                     <img
                       className="rank-img"
-                      src={`assets/img/ranks/${player.rank}.svg`}
+                      src={`../assets/img/ranks/${player.rank}.svg`}
                       alt="rank-img"
                     />
                   </td>

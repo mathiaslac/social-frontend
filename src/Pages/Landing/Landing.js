@@ -1,12 +1,10 @@
 import { Fragment } from "react";
 import "./Landing.css";
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
 
-import usePing from "../../common/hooks/use-ping";
+// import usePing from "../../common/hooks/use-ping";
 
 const Landing = () => {
-  const { t } = useTranslation();
   // const [awpPing, retakePing, bhopPing, hnsPing, dmPing, compPing] = usePing([
   //   "37.187.221.140:27015",
   //   "37.187.221.141:27015",
@@ -22,8 +20,8 @@ const Landing = () => {
       </Helmet>
       <div className="shop">
         <div className="card" style={{ marginTop: "100px" }}>
-          <h1>{t("landing-hello")}</h1>
-          <h1>{t("landing-how are you?")}</h1>
+          <h1>hello</h1>
+          <h1>how are you ?</h1>
         </div>
         {/* <div className="card">
           <p>AWP Ping: {Math.floor(awpPing)} ms</p>

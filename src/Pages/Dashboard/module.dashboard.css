@@ -1,0 +1,20 @@
+.top-dashboard-user {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 15px 0;
+}
+.top-dash-avatar {
+  border-radius: 50%;
+}
+.right-dashboard-user {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.nickname-dash {
+  font-weight: bold;
+  font-size: 15px;
+}
+.admins-img-dash {
+  height: 20px;
+}

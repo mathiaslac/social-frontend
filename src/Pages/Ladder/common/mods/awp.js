@@ -1,10 +1,8 @@
 import { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import { useTranslation } from "react-i18next";
 import "../module.mods-grid.css";
 
 const Awp = () => {
-  const { t } = useTranslation();
   const [count, setCount] = useState([]);
 
   const getCount = () => {
@@ -42,7 +40,7 @@ const Awp = () => {
             <span style={{ color: "rgb(116, 209, 24)", marginRight: "5px" }}>
               {count.namesCount}
             </span>
-            {t("leadboards-playersRanked")}
+            players ranked
           </article>
         </div>
       </div>

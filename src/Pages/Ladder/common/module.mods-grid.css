@@ -20,14 +20,17 @@
   min-width: 0;
   width: 100%;
 }
-
+.col-lg-6 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 .lbPage__games {
   background: #232633;
   border-radius: 8px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  padding: 16px 24px 24px;
+  padding: 0px 23px 0px 23px;
   display: block;
 }
 .gameCoverDisplay {
@@ -52,7 +55,6 @@
     display: block;
     -webkit-flex: 0 0 33.33333333%;
     flex: 0 0 33.33333333%;
-    max-width: 33.33333333%;
   }
 }
 @media (min-width: 768px) {

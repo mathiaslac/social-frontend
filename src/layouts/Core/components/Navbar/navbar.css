@@ -129,8 +129,8 @@ input {
   width: 100%;
   background: var(--body-bg-color-dark);
   border: 0;
-  padding: 10px 10px 10px 39px;
-  border-radius: 2em;
+  padding: 10px 10px 10px 12px;
+  border-radius: 8px;
   height: 40px;
   transition: all 0.15s linear;
   font-size: 15px;
@@ -881,6 +881,27 @@ svg:not(:root) {
   filter: drop-shadow(0 0 10px #3b69b280);
   cursor: pointer;
 }
+.login-button {
+  background: #3b69b2;
+  border: none;
+  padding: 8px 15px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.steam-icon-login {
+  margin-right: 5px;
+}
+.loggedin-flex-nav {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  flex: 0 1 33.3%;
+}
 .dropdown-lang-content {
   transform: scale(0);
   top: 110px;
@@ -894,6 +915,20 @@ svg:not(:root) {
   transform: scale(1);
   transition: all 0.4s ease 0s;
 }
+
+.Toastify__toast--default {
+  background: #191f2c;
+  color: #fff;
+  font-weight: 500;
+}
+.Toastify__progress-bar-theme--light {
+  background: #6080ff;
+}
+
+.Toastify {
+  z-index: -1;
+}
+
 .langTranslateX {
   margin-right: -23px;
 }

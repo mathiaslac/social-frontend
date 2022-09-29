@@ -24,7 +24,7 @@ const SeasonsSelect = () => {
         }}
       >
         <h3>
-          <img src="assets/img/svg/pages/medal.svg" alt="medal-img" />
+          <img src="../assets/img/svg/pages/medal.svg" alt="medal-img" />
           Leadboard
         </h3>
         <div>

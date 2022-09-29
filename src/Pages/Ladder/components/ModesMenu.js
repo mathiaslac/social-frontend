@@ -1,5 +1,6 @@
 import "./module.modes-menu.css";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 import SeasonTimer from "./SeasonTimer";
 
@@ -7,37 +8,37 @@ const ServersModes = [
   {
     id: "awp",
     modeName: "AWP",
-    icon: "assets/img/svg/servers/awp.svg",
+    icon: "../assets/img/svg/servers/awp.svg",
     modeType: "Entertainment mode",
   },
   {
     id: "bhop",
     modeName: "BHOP",
-    icon: "assets/img/svg/servers/bhop.svg",
+    icon: "../assets/img/svg/servers/bhop.svg",
     modeType: "Entertainment mode",
   },
   {
     id: "comp",
     modeName: "COMPETITIVE",
-    icon: "assets/img/svg/servers/comp.svg",
+    icon: "../assets/img/svg/servers/comp.svg",
     modeType: "Training Mode",
   },
   {
     id: "dm",
     modeName: "DM",
-    icon: "assets/img/svg/servers/dm.svg",
+    icon: "../assets/img/svg/servers/dm.svg",
     modeType: "Training Mode",
   },
   {
     id: "hns",
     modeName: "HIDE & SEEK",
-    icon: "assets/img/svg/servers/hns.svg",
+    icon: "../assets/img/svg/servers/hns.svg",
     modeType: "Entertainment mode",
   },
   {
     id: "retake",
     modeName: "RETAKE",
-    icon: "assets/img/svg/servers/retake.svg",
+    icon: "../assets/img/svg/servers/retake.svg",
     modeType: "Training Mode",
   },
 ];
@@ -84,15 +85,17 @@ const ModesMenu = () => {
                 marginBottom: "5px",
               }}
             >
-              <div className="div-modes">
-                <div className="modes-onediv">
-                  <img src={icon} alt={modeName} />
+              <Link to={`/leadboards/${id}`}>
+                <div className="div-modes">
+                  <div className="modes-onediv">
+                    <img src={icon} alt={modeName} />
+                  </div>
+                  <div>
+                    <h6 className="server-name">{modeName}</h6>
+                    <span className="mode-type">{modeType}</span>
+                  </div>
                 </div>
-                <div>
-                  <h6 className="server-name">{modeName}</h6>
-                  <span className="mode-type">{modeType}</span>
-                </div>
-              </div>
+              </Link>
             </motion.li>
           ))}
         </ul>

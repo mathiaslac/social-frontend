@@ -1,9 +1,7 @@
 import { Fragment } from "react";
-import { useTranslation } from "react-i18next";
 import "./module.header-events.css";
 
 const HeaderEvents = () => {
-  const { t } = useTranslation();
   return (
     <Fragment>
       <div className="game-lobbies_page__header__6AFcN">
@@ -16,7 +14,7 @@ const HeaderEvents = () => {
           <div className="game-lobbies_banner__textArea__3PnMB">
             <div className="game-lobbies_banner__textArea__titleRow__30eNe">
               <h1 className="game-lobbies_banner__text__h1__37RuS game-lobbies_font__size__h1__1nFs5 game-lobbies_font__weight__bold__WJF_V">
-                {t("events-headerTitle")}
+                Events
               </h1>
               <div className="game-lobbies_banner__textArea__betaBox__2_VSl">
                 <h2 className="game-lobbies_banner__text__h2__2F138 game-lobbies_font__size__h8__1dYOr game-lobbies_font__weight__bold__WJF_V">
@@ -25,7 +23,7 @@ const HeaderEvents = () => {
               </div>
             </div>
             <h3 className="game-lobbies_banner__text__h3__THu1F game-lobbies_font__size__h6__1P4Iz game-lobbies_font__weight__semiBold__181Nd">
-              {t("events-headerSubTitle")}
+              All events at the same place
             </h3>
           </div>
           <img

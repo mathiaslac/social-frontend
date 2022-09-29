@@ -25,13 +25,12 @@ const Modal = (props) => {
     >
       <div className="modal" onClick={props.onClose}>
         <div onClick={(e) => e.stopPropagation()}>
-          <img
-            src="assets/img/svg/servers/close-modal.svg"
-            onClick={props.onClose}
-            className="modal-close pointer"
-            alt="modal-close"
-          />
-          <div>{props.children}</div>
+          <div
+            className="ideas-modal post-creator_postCreator__2PvBy"
+            style={{ width: 500 }}
+          >
+            {props.children}
+          </div>
         </div>
       </div>
     </CSSTransition>,

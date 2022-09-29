@@ -30,7 +30,7 @@ class Clock extends Component {
       <div className="head__timer">
         <span>Timer</span>
         <div className="timer-card">
-          <img src="assets/img/icons/watch.svg" alt="timer-icons" />
+          <img src="../assets/img/icons/watch.svg" alt="timer-icons" />
           <div className="timer">
             <p className="days">{this.state.days}D </p>
             <p className="hours">{this.state.hours}H </p>

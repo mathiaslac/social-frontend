@@ -1,0 +1,21 @@
+.dash-sb-nav {
+  background: #232633;
+  margin-bottom: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-radius: 12px;
+}
+.dash-sb-nav-link {
+  background: #232633;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 12px;
+  border-radius: 12px;
+}
+
+.sb-link-active {
+  background: #2f3445;
+}

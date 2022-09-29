@@ -6,4 +6,6 @@ export const LEADBOARDS_ROUTE = "/leadboards";
 export const EVENTS_ROUTE = "/events";
 export const DONATE_ROUTE = "/donate";
 export const CHATS_ROUTE = "/chats";
+export const DASHBOARD_ROUTE = "/dashboard";
 export const API_URL = "http://localhost:5000";
+export const ARTICLE_ROUTE = "/post/:id";

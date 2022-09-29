@@ -36,3 +36,9 @@
   transition: opacity 0.4s ease;
   z-index: 1;
 }
+.ideas-modal-centered .ideas-modal {
+  top: 0;
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
