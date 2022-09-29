@@ -372,7 +372,7 @@ const Navbar = (props) => {
                     width={18}
                     height={18}
                   />
-                  Logine with Steam
+                  Login with Steam
                 </button>
               </div>
             </div>
