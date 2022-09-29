@@ -976,3 +976,18 @@ svg:not(:root) {
   text-align: center;
   margin: 0 -0.03em;
 }
+.login-btn {
+  padding: 10px 20px;
+  border: 0 !important;
+  background-color: #6080ff;
+  outline: 0;
+  border-radius: 15px;
+  color: #fff;
+  transition: .3s;
+  cursor: pointer;
+  font-weight: 600;
+}
+.login-btn:hover {
+  transition: .3s;
+  filter: brightness(110%);
+}
