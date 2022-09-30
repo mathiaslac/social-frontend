@@ -3,17 +3,20 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import SkeletonSb from "../../../../Skeleton/Dashboard/Skeleton-sb";
+
 import "../../../../components/posts/RegularPost/module.posts.css";
 import "../../../Ladder/components/module.top.css";
 import "./module.dash-sb.css";
 
 const SbComms = () => {
   const [comms, setComms] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   const getComms = () => {
     axios.get("http://localhost:5000/api/comms").then((response) => {
       const comms = response.data;
       setComms(comms);
+      setIsLoading(false);
     });
   };
 
@@ -45,6 +48,7 @@ const SbComms = () => {
       <div className="top__table-bans">
         <table>
           <tbody className="grey-scroll shadow--top">
+            {isLoading && <SkeletonSb cards={10} />}
             {comms &&
               comms.map((comm, index) => (
                 <motion.tr

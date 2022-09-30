@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 import { Context } from "../../../index";
 import { motion } from "framer-motion";
 import Modal from "../AddPost/Modal/Modal";
+import SkeletonPost from "../../../Skeleton/Home/Skeleton-Post";
 import "./module.posts.css";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { user } = useContext(Context);
   const [showDropPosts, setShowDropPosts] = useState(false);
   useEffect(() => {
@@ -22,10 +24,12 @@ const Articles = () => {
         ...doc.data(),
       }));
       setArticles(articles);
+      setIsLoading(false);
     });
   }, []);
   return (
     <div>
+      {isLoading && <SkeletonPost cards={3} />}
       {articles.length === 0 ? (
         <p>No posts found!</p>
       ) : (

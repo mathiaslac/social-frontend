@@ -3,17 +3,20 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import SkeletonSb from "../../../../Skeleton/Dashboard/Skeleton-sb";
+
 import "../../../../components/posts/RegularPost/module.posts.css";
 import "../../../Ladder/components/module.top.css";
 import "./module.dash-sb.css";
 
 const SbAdmins = () => {
   const [admins, setAdmins] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   const getAdmins = () => {
     axios.get("http://localhost:5000/api/admins").then((response) => {
       const admins = response.data;
       setAdmins(admins);
+      setIsLoading(false);
     });
   };
 
@@ -44,6 +47,7 @@ const SbAdmins = () => {
       <div className="top__table-admins">
         <table>
           <tbody className="grey-scroll shadow--top">
+            {isLoading && <SkeletonSb cards={10} />}
             {admins &&
               admins.map((admin, index) => (
                 <motion.tr

@@ -3,6 +3,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 
+import SkeletonSb from "../../../../Skeleton/Dashboard/Skeleton-sb";
+
 import "../../../../components/posts/RegularPost/module.posts.css";
 import "../../../Ladder/components/module.top.css";
 import "../Sourcebans/module.dash-sb.css";
@@ -11,11 +13,12 @@ const Premiums = () => {
   const navigate = useNavigate();
 
   const [premiums, setPremiums] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   const getPremiums = () => {
     axios.get("http://localhost:5000/api/premiums").then((response) => {
       const premiums = response.data;
       setPremiums(premiums);
+      setIsLoading(false);
     });
   };
 
@@ -35,6 +38,7 @@ const Premiums = () => {
       <div className="top__table-premiums">
         <table>
           <tbody className="grey-scroll shadow--top">
+            {isLoading && <SkeletonSb cards={10} />}
             {premiums &&
               premiums.map((premium, index) => (
                 <motion.tr

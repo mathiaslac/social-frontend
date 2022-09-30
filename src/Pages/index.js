@@ -5,5 +5,5 @@ export { default as Home } from "./Home/Home";
 export { default as Ladder } from "./Ladder/Ladder";
 export { default as Landing } from "./Landing/Landing";
 export { default as Chats } from "./Chats/Chats";
-export { default as Profiles } from "./Profiles/76561198184313278";
+export { default as Profiles } from "./Profiles/profile";
 export { default as Donate } from "./Donate/Donate";

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+// import Spline from "@splinetool/react-spline";
 
 import "./NotFound.css";
 
@@ -13,9 +14,11 @@ const NotFound = () => {
       <div className="wrap">
         <div id="routerpages">
           <div className="error-page">
-            <div className="error--page">
-              <div className="qaq">404</div>
-              <div className="not--found">Page not found</div>
+            <div className="error--page" style={{ marginTop: -200 }}>
+              {/* <Spline scene="https://prod.spline.design/Kr3Xh60xvGU7OKxx/scene.splinecode" /> */}
+              <div className="not--found" style={{ marginTop: -200 }}>
+                Page not found
+              </div>
               <div className="notfound--text">
                 You are trying to access a page that has been deleted or didn't
                 even exist

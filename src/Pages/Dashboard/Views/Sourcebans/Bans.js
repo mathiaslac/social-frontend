@@ -3,17 +3,20 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import SkeletonSb from "../../../../Skeleton/Dashboard/Skeleton-sb";
+
 import "../../../../components/posts/RegularPost/module.posts.css";
 import "../../../Ladder/components/module.top.css";
 import "./module.dash-sb.css";
 
 const SbBans = () => {
   const [bans, setBans] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   const getBans = () => {
     axios.get("http://localhost:5000/api/bans").then((response) => {
       const bans = response.data;
       setBans(bans);
+      setIsLoading(false);
     });
   };
 
@@ -45,6 +48,7 @@ const SbBans = () => {
       <div className="top__table-bans">
         <table>
           <tbody className="grey-scroll shadow--top">
+            {isLoading && <SkeletonSb cards={10} />}
             {bans &&
               bans.map((ban, index) => (
                 <motion.tr

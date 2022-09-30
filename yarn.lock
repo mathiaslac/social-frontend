@@ -2194,6 +2194,20 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@splinetool/react-spline@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@splinetool/react-spline/-/react-spline-2.2.3.tgz#f0c93fe1f539be95de4564c19440be1061d42ee0"
+  integrity sha512-KdvyP2cCLLG/PcHp0ObE147nhawY4R/iqI6733MSWBx4KSpeo4oD589rCPuXeGdgyr2lCtZqUQOkQj4QCnXxmw==
+  dependencies:
+    react-merge-refs "^1.1.0"
+
+"@splinetool/runtime@^0.9.113":
+  version "0.9.113"
+  resolved "https://registry.yarnpkg.com/@splinetool/runtime/-/runtime-0.9.113.tgz#420aff3e76537098647b46de62d3ba7bfcdd864c"
+  integrity sha512-iMCnkK+nVa+2INulzOyGBliS4Y4gVkqrbFAaecltDDhpyHyD0thfQeJ/O4F6oa5fUmH5HgxMwqkX8h7UD7AkQA==
+  dependencies:
+    on-change "^4.0.0"
+
 "@strikeentco/get@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@strikeentco/get/-/get-1.0.1.tgz#2188a0b00c0e2cb3bb6bdf25c400134c98619057"
@@ -7269,6 +7283,11 @@ obuf@^1.0.0, obuf@^1.1.2:
   resolved "https://registry.npmjs.org/obuf/-/obuf-1.1.2.tgz"
   integrity sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==
 
+on-change@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/on-change/-/on-change-4.0.1.tgz#a3fea9971748efab3560351c8278ea1a692b7c16"
+  integrity sha512-Gxmr/8NsLTigoUUEPvnAIUGl7uxwfC3Mm1G+qTmODEZcT4ZGfeaFyQgfGCdbKVS2pICIFYB82RH6MUHToPcS4Q==
+
 on-finished@2.4.1:
   version "2.4.1"
   resolved "https://registry.npmjs.org/on-finished/-/on-finished-2.4.1.tgz"
@@ -8438,8 +8457,13 @@ react-loader-spinner@^5.3.4:
 
 react-loading-skeleton@^3.1.0:
   version "3.1.0"
-  resolved "https://registry.npmjs.org/react-loading-skeleton/-/react-loading-skeleton-3.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.1.0.tgz#ce22942f1af77bfd60854417075792367f54f41e"
   integrity sha512-j1U1CWWs68nBPOg7tkQqnlFcAMFF6oEK6MgqAo15f8A5p7mjH6xyKn2gHbkcimpwfO0VQXqxAswnSYVr8lWzjw==
+
+react-merge-refs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
+  integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
 
 react-modal-hover@^1.1.13:
   version "1.1.13"
