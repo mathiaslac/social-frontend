@@ -72,7 +72,10 @@ const Articles = () => {
               <div className="post_post__h5utz">
                 <div className="post_header__1v7-G">
                   <div className="user-stub_stub___zdSR post_us__2vs5M">
-                    <Link to={`/${userId}`} className="user-stub_link__12FXh">
+                    <Link
+                      to={`/profile/${userId}`}
+                      className="user-stub_link__12FXh"
+                    >
                       <span
                         className="user-stub_avatar__d56DR ideas-avatar ideas-avatar-circle ideas-avatar-image"
                         style={{

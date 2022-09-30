@@ -1,9 +1,11 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 
 import "../module.top.css";
 import { motion } from "framer-motion";
-
+import { Context } from "../../../../index";
 import axios from "axios";
+import SteamID from "steamid";
 
 const YourPlace = [
   {
@@ -18,8 +20,11 @@ const YourPlace = [
     deaths: 0,
   },
 ];
+
 const TopAwp = () => {
   const [players, setPlayers] = useState([]);
+  const { user } = useContext(Context);
+  const [currentPlayer, setCurrentPlayer] = useState([]);
 
   const getPlayers = () => {
     axios
@@ -29,9 +34,26 @@ const TopAwp = () => {
         setPlayers(players);
       });
   };
+  const getCurrentPlayer = () => {
+    if (user.isAuth) {
+      axios
+        .get(
+          `http://localhost:5000/api/servers/awp/currentplayer/${user.user.steam_short}`
+        )
+        .then((response) => {
+          const currentPlayer = response.data[0];
+          setCurrentPlayer(currentPlayer);
+          console.log(currentPlayer);
+        });
+    }
+  };
+  const steam64 = (steam) => {
+    let steamclass = new SteamID(steam);
+    return steamclass.getSteamID64();
+  };
 
   useEffect(() => getPlayers(), []);
-
+  useEffect(() => getCurrentPlayer(), []);
   return (
     <Fragment>
       <div className="header__table-top">
@@ -45,41 +67,42 @@ const TopAwp = () => {
       </div>
       <div className="top__table">
         <table>
-          {YourPlace.map(
-            ({
-              id,
-              nickname,
-              userImg,
-              posNum,
-              kdr,
-              rankImg,
-              points,
-              kills,
-              deaths,
-            }) => (
-              <tr key={id} className="yourplace">
-                <td>{posNum}</td>
-                <td className="player-td">
-                  <span>You</span>
-                  <img src={userImg} alt={nickname} />
-                  {nickname}
-                </td>
-                <td className="center">{kills}</td>
-                <td className="center">{deaths}</td>
-                <td className="center">{kdr}</td>
-                <td className="img-ml pointer">
-                  <img className="rank-img" src={rankImg} alt="rank-img" />
-                </td>
-                <td className="gold-text">
-                  <img
-                    src="https://cloud.cybershoke.net/pages/leaderboard/icons/logo.svg"
-                    alt="icon-img"
-                  />
-                  {points}
-                </td>
-              </tr>
-            )
-          )}
+          <thead>
+            <tr className="yourplace" style={{ marginBottom: 0 }}>
+              <td></td>
+              <td className="player-td">
+                <span>You</span>
+                <img src={user.user.avatar.medium} alt={currentPlayer.name} />
+                {currentPlayer.name}
+              </td>
+              <td className="center">{currentPlayer.kills}</td>
+              <td className="center">{currentPlayer.deaths}</td>
+              <td className="center">
+                {(
+                  Math.round(
+                    (currentPlayer.kills / currentPlayer.deaths) * 100
+                  ) / 100
+                )
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </td>
+              <td className="img-ml pointer">
+                <img
+                  className="rank-img"
+                  src={`../assets/img/ranks/${currentPlayer.rank}.svg`}
+                  alt="rank-img"
+                />
+              </td>
+              <td className="gold-text">
+                <img
+                  src="https://cloud.cybershoke.net/pages/leaderboard/icons/logo.svg"
+                  alt="icon-img"
+                />
+                {currentPlayer.value}
+              </td>
+            </tr>
+          </thead>
+
           <tbody className="grey-scroll shadow--top">
             {players &&
               players.map((player, index) => (
@@ -107,21 +130,29 @@ const TopAwp = () => {
                     className="pos-mr top-color"
                     style={{ color: player.color }}
                   >
-                    <div>
+                    <div className="rankIcon">
                       <img
-                        src={`../assets/img/svg/place/${index + 1}.svg`}
+                        src={`../assets/img/svg/place/new/rank.svg`}
+                        onError={(event) =>
+                          (event.target.style.display = "none")
+                        }
+                        alt="pos-img"
+                      />
+                      <img
+                        className="rankImg"
+                        src={`../assets/img/svg/place/new/${index + 1}.svg`}
                         onError={(event) =>
                           (event.target.style.display = "none")
                         }
                         alt="pos-img"
                       />
                     </div>
-                    {index + 1}
+                    <span className="rankIcon__rank">{index + 1}</span>
                   </td>
                   <td className="user-fix">
-                    <a href={`profile/${player.steam}`}>
+                    <Link to={`/profile/${steam64(player.steam)}`}>
                       <span className="limited-length">{player.name}</span>
-                    </a>
+                    </Link>
                   </td>
                   <td className="center">{player.kills}</td>
                   <td className="center">{player.deaths}</td>

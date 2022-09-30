@@ -4,7 +4,7 @@ import "../module.top.css";
 import { motion } from "framer-motion";
 
 import axios from "axios";
-
+import SteamID from "steamid";
 const YourPlace = [
   {
     id: "snooze",
@@ -29,7 +29,10 @@ const TopRetake = () => {
         setPlayers(players);
       });
   };
-
+  const steam64 = (steam) => {
+    let steamclass = new SteamID(steam);
+    return steamclass.getSteamID64();
+  };
   useEffect(() => getPlayers(), []);
 
   return (
@@ -107,19 +110,27 @@ const TopRetake = () => {
                     className="pos-mr top-color"
                     style={{ color: player.color }}
                   >
-                    <div>
+                    <div className="rankIcon">
                       <img
-                        src={`../assets/img/svg/place/${index + 1}.svg`}
+                        src={`../assets/img/svg/place/new/rank.svg`}
+                        onError={(event) =>
+                          (event.target.style.display = "none")
+                        }
+                        alt="pos-img"
+                      />
+                      <img
+                        className="rankImg"
+                        src={`../assets/img/svg/place/new/${index + 1}.svg`}
                         onError={(event) =>
                           (event.target.style.display = "none")
                         }
                         alt="pos-img"
                       />
                     </div>
-                    {index + 1}
+                    <span className="rankIcon__rank">{index + 1}</span>
                   </td>
                   <td className="user-fix">
-                    <a href={`profile/${player.steam}`}>
+                    <a href={`/profile/${steam64(player.steam)}`}>
                       <span className="limited-length">{player.name}</span>
                     </a>
                   </td>

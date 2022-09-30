@@ -1,9 +1,11 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
 
 import "../module.top.css";
 import { motion } from "framer-motion";
-
 import axios from "axios";
+import SteamID from "steamid";
+
+import { Context } from "../../../../index";
 
 const YourPlace = [
   {
@@ -20,7 +22,8 @@ const YourPlace = [
 ];
 const TopComp = () => {
   const [players, setPlayers] = useState([]);
-
+  const { user } = useContext(Context);
+  const [currentPlayer, setCurrentPlayer] = useState([]);
   const getPlayers = () => {
     axios
       .get("http://localhost:5000/api/servers/comp/ranks")
@@ -30,8 +33,28 @@ const TopComp = () => {
       });
   };
 
-  useEffect(() => getPlayers(), []);
+  const steam64 = (steam) => {
+    let steamclass = new SteamID(steam);
+    return steamclass.getSteamID64();
+  };
+  // getMiniprofileByID64
 
+  const getCurrentPlayer = () => {
+    if (user.isAuth) {
+      axios
+        .get(
+          `http://localhost:5000/api/servers/awp/currentplayer/${user.user.steam_short}`
+        )
+        .then((response) => {
+          const currentPlayer = response.data[0];
+          setCurrentPlayer(currentPlayer);
+          console.log(currentPlayer);
+        });
+    }
+  };
+
+  useEffect(() => getPlayers(), []);
+  useEffect(() => getCurrentPlayer(), []);
   return (
     <Fragment>
       <div className="header__table-top">
@@ -107,19 +130,28 @@ const TopComp = () => {
                     className="pos-mr top-color"
                     style={{ color: player.color }}
                   >
-                    <div>
+                    <div className="rankIcon">
                       <img
-                        src={`../assets/img/svg/place/${index + 1}.svg`}
+                        src={`../assets/img/svg/place/new/rank.svg`}
+                        onError={(event) =>
+                          (event.target.style.display = "none")
+                        }
+                        alt="pos-img"
+                      />
+                      <img
+                        className="rankImg"
+                        src={`../assets/img/svg/place/new/${index + 1}.svg`}
                         onError={(event) =>
                           (event.target.style.display = "none")
                         }
                         alt="pos-img"
                       />
                     </div>
-                    {index + 1}
+                    <span className="rankIcon__rank">{index + 1}</span>
                   </td>
                   <td className="user-fix">
-                    <a href={`profile/${player.steam}`}>
+                    <img src="" alt="user-avatar" />
+                    <a href={`/profile/${steam64(player.steam)}`}>
                       <span className="limited-length">{player.name}</span>
                     </a>
                   </td>

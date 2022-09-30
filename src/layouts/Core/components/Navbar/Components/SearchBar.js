@@ -3,6 +3,8 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./module.search-bar.css";
 
+import SteamID from "steamid";
+
 const SearchBar = () => {
   const [users, setUsers] = useState([]);
   const [text, setText] = useState("");
@@ -25,6 +27,10 @@ const SearchBar = () => {
     setSuggestions(matches);
     setText(text);
   };
+  const steam64 = (steam) => {
+    let steamclass = new SteamID(steam);
+    return steamclass.getSteamID64();
+  };
   return (
     <Fragment>
       <input
@@ -39,7 +45,7 @@ const SearchBar = () => {
           {suggestions &&
             suggestions.slice(0, 9).map((suggestion, i) => (
               <div className="sugg__search" key={i}>
-                <Link to={`/prfoile/${suggestion.steamid}`}>
+                <Link to={`/profile/${steam64(suggestion.steamid)}`}>
                   <div className="sugg__playername">
                     {suggestion.playername}
                   </div>
