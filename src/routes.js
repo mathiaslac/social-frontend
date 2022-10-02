@@ -8,6 +8,7 @@ import {
   INDEX_ROUTE,
   LEADBOARDS_ROUTE,
   SERVERS_ROUTE,
+  PROFILE_ROUTE,
 } from "./util/consts";
 
 import {
@@ -38,6 +39,7 @@ const Servers = lazy(() => import("./Pages/Servers/Servers"));
 const Events = lazy(() => import("./Pages/Events/Events"));
 const Leadboards = lazy(() => import("./Pages/Ladder/Leadboards"));
 const Chats = lazy(() => import("./Pages/Chats/Chats"));
+const Profile = lazy(() => import("./Pages/Profiles/profile"));
 const Article = lazy(() => import("./components/posts/RegularPost/Article"));
 
 ////////// DASHBOARD COMPONENTS //////////
@@ -228,5 +230,9 @@ export const allRoutes = [
   {
     path: ARTICLE_ROUTE,
     Component: Article,
+  },
+  {
+    path: PROFILE_ROUTE,
+    Component: Profile,
   },
 ];

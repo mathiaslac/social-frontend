@@ -1,14 +1,20 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 
+import { useParams } from "react-router-dom";
+import SteamID from "steamid";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
-import "./Profile.css";
+import axios from "axios";
 
-import { axios } from "axios";
+import "./module.profile.css";
 
 const Profiles = () => {
+  const params = useParams();
   const [faceit, setFaceit] = useState([]);
+
+  const [stats, setStats] = useState([]);
+
   const getFaceit = () => {
     fetch(
       "https://open.faceit.com/data/v4/players?game=csgo&game_player_id=76561198184313278",
@@ -21,12 +27,31 @@ const Profiles = () => {
         game: "csgo",
       }
     ).then((response) => {
-      console.log(response);
+      console.log(response.url);
       const faceit = response;
       setFaceit(faceit);
     });
   };
+  const steamShort = (playerId) => {
+    let steamclass = new SteamID(playerId);
+    return steamclass.getSteam2RenderedID();
+  };
+
+  const playerID = steamShort(params.playerId).substring(10);
+
+  const getStats = () => {
+    axios
+      .get(`http://localhost:5000/api/servers/awp/player/${playerID}`)
+      .then((response) => {
+        const stats = response.data[0];
+        setStats(stats);
+        console.log(stats);
+      });
+  };
+
+  console.log(playerID);
   useEffect(() => getFaceit(), []);
+  useEffect(() => getStats(), []);
   return (
     <Fragment>
       <Helmet>
@@ -42,7 +67,27 @@ const Profiles = () => {
         </TabList>
 
         <TabPanel>
-          <h2>Any content 1</h2>
+          <div>
+            <div>
+              <p>Name : {stats.name}</p>
+              <p>Points : {stats.value}</p>
+              <p>
+                Rank :{" "}
+                <img
+                  src={`../assets/img/ranks/${stats.rank}.svg`}
+                  alt=""
+                  width={20}
+                  height={20}
+                />
+              </p>
+              <p>Kills : {stats.kills}</p>
+              <p>Deaths : {stats.deaths}</p>
+              <p>Headshots : {stats.headshots}</p>
+              <p>Assists : {stats.assists}</p>
+              <p>Playtime : {new Date().toTimeString(stats.playtime)}</p>
+              <p>Last seen : {new Date().toDateString(stats.lastconnect)}</p>
+            </div>
+          </div>
         </TabPanel>
         <TabPanel>
           <h2>Any content 2</h2>

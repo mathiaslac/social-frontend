@@ -4,6 +4,7 @@ export const INDEX_ROUTE = "/";
 export const SERVERS_ROUTE = "/servers";
 export const LEADBOARDS_ROUTE = "/leadboards";
 export const EVENTS_ROUTE = "/events";
+export const PROFILE_ROUTE = "/profile/:playerId";
 export const DONATE_ROUTE = "/donate";
 export const CHATS_ROUTE = "/chats";
 export const DASHBOARD_ROUTE = "/dashboard";
