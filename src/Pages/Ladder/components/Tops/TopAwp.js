@@ -7,24 +7,11 @@ import { Context } from "../../../../index";
 import axios from "axios";
 import SteamID from "steamid";
 
-const YourPlace = [
-  {
-    id: "snooze",
-    nickname: "Snooze",
-    posNum: "1784",
-    kdr: "2,00",
-    userImg: "../assets/img/steamUser.png",
-    rankImg: "../assets/img/ranks/1.svg",
-    points: 35,
-    kills: 2,
-    deaths: 0,
-  },
-];
-
 const TopAwp = () => {
   const [players, setPlayers] = useState([]);
   const { user } = useContext(Context);
   const [currentPlayer, setCurrentPlayer] = useState([]);
+  const [avatar, setAvatar] = useState([]);
 
   const getPlayers = () => {
     axios
@@ -43,7 +30,6 @@ const TopAwp = () => {
         .then((response) => {
           const currentPlayer = response.data[0];
           setCurrentPlayer(currentPlayer);
-          console.log(currentPlayer);
         });
     }
   };
@@ -52,8 +38,18 @@ const TopAwp = () => {
     return steamclass.getSteamID64();
   };
 
+  const getAvatar = () => {
+    axios
+      .get(`http://localhost:5000/api/avatar/${steam64("STEAM_0:0:546942335")}`)
+      .then((response) => {
+        const avatar = response.data;
+        setAvatar(avatar);
+      });
+  };
+
   useEffect(() => getPlayers(), []);
   useEffect(() => getCurrentPlayer(), []);
+  useEffect(() => getAvatar(), []);
   return (
     <Fragment>
       <div className="header__table-top">
@@ -102,7 +98,6 @@ const TopAwp = () => {
               </td>
             </tr>
           </thead>
-
           <tbody className="grey-scroll shadow--top">
             {players &&
               players.map((player, index) => (
@@ -151,6 +146,7 @@ const TopAwp = () => {
                   </td>
                   <td className="user-fix">
                     <Link to={`/profile/${steam64(player.steam)}`}>
+                      <img src={avatar} alt="player-img" />
                       <span className="limited-length">{player.name}</span>
                     </Link>
                   </td>

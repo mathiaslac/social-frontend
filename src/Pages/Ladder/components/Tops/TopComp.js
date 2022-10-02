@@ -48,7 +48,6 @@ const TopComp = () => {
         .then((response) => {
           const currentPlayer = response.data[0];
           setCurrentPlayer(currentPlayer);
-          console.log(currentPlayer);
         });
     }
   };

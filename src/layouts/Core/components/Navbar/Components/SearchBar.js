@@ -46,6 +46,7 @@ const SearchBar = () => {
             suggestions.slice(0, 9).map((suggestion, i) => (
               <div className="sugg__search" key={i}>
                 <Link to={`/profile/${steam64(suggestion.steamid)}`}>
+                  <img src="" alt="user-avatar" width={20} height={20} />
                   <div className="sugg__playername">
                     {suggestion.playername}
                   </div>
