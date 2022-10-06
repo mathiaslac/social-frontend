@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SkeletonSb from "../../../../Skeleton/Dashboard/Skeleton-sb";
 
 import "../../../../components/posts/RegularPost/module.posts.css";
-import "../../../Ladder/components/module.top.css";
+import "../../../Ladder/components/css/module.top.css";
 import "../Sourcebans/module.dash-sb.css";
 
 const Premiums = () => {

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 import LeftUsers from "./Left/LeftUsers";
 import OpenedChats from "./Right/OpenedChat";

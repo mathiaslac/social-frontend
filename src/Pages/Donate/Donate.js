@@ -1,7 +1,7 @@
 import { Fragment, useState, useContext, useMemo } from "react";
 import jwtDecode from "jwt-decode";
 import "./module.vip.css";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { API_URL } from "../../util/consts";
 import { toast } from "react-toastify";

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import "./module.seasons-select.css";
+import "./css/module.seasons-select.css";
 import { motion } from "framer-motion";
 
 const SeasonsSelect = () => {

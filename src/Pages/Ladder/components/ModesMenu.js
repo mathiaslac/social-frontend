@@ -1,4 +1,4 @@
-import "./module.modes-menu.css";
+import "./css/module.modes-menu.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 

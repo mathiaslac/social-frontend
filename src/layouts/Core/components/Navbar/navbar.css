@@ -983,11 +983,50 @@ svg:not(:root) {
   outline: 0;
   border-radius: 15px;
   color: #fff;
-  transition: .3s;
+  transition: 0.3s;
   cursor: pointer;
   font-weight: 600;
 }
 .login-btn:hover {
-  transition: .3s;
+  transition: 0.3s;
   filter: brightness(110%);
+}
+.notification-count {
+  cursor: pointer;
+}
+.ideasBadge > sup {
+  -webkit-align-items: center;
+  align-items: center;
+  border-radius: 1000px;
+  border: 3px solid #232633;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 17px;
+  min-width: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.ideasBadge > sup > span {
+  font-size: 12px;
+  font-weight: 700;
+  position: relative;
+  text-align: center;
+}
+@keyframes antZoomBadgeIn {
+  0% {
+    -webkit-transform: scale(0) translate(50%, -50%);
+    transform: scale(0) translate(50%, -50%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1) translate(50%, -50%);
+    transform: scale(1) translate(50%, -50%);
+  }
 }

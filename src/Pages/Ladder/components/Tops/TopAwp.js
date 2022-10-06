@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import "../module.top.css";
+import "../css/module.top.css";
 import { motion } from "framer-motion";
 import { Context } from "../../../../index";
 import axios from "axios";

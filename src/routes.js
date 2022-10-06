@@ -37,7 +37,6 @@ const Donate = lazy(() => import("./Pages/Donate/Donate"));
 const Home = lazy(() => import("./Pages/Home/Home"));
 const Servers = lazy(() => import("./Pages/Servers/Servers"));
 const Events = lazy(() => import("./Pages/Events/Events"));
-const Leadboards = lazy(() => import("./Pages/Ladder/Leadboards"));
 const Chats = lazy(() => import("./Pages/Chats/Chats"));
 const Profile = lazy(() => import("./Pages/Profiles/profile"));
 const Article = lazy(() => import("./components/posts/RegularPost/Article"));
@@ -218,10 +217,6 @@ export const allRoutes = [
   {
     path: SERVERS_ROUTE,
     Component: Servers,
-  },
-  {
-    path: LEADBOARDS_ROUTE,
-    Component: Leadboards,
   },
   {
     path: EVENTS_ROUTE,

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import { Helmet } from "react-helmet";
-import HeaderEvents from "./HeaderEvents";
+import { Helmet } from "react-helmet-async";
+import HeaderEvents from "./components/HeaderEvents";
 
 import "./module.events.css";
 

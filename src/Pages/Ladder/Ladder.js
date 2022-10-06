@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 import { Outlet } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import RightFeed from "./layout";
 import { HeaderLadder, SeasonsSelect } from "./components";
 
@@ -11,7 +11,7 @@ const LeaderBoardLayout = () => {
   return (
     <Fragment>
       <Helmet>
-        <title>Ideas - Ladder</title>
+        <title>Ideas - Leadboards</title>
       </Helmet>
       <div
         className="ladder_row"

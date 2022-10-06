@@ -1,15 +1,14 @@
-import React, { Fragment } from "react";
 import "./Home.css";
 
 import Feed from "../../layouts/Content/Feed/index";
 
 import Articles from "../../components/posts/RegularPost/Articles";
 
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
-    <Fragment>
+    <>
       <Helmet>
         <title>Ideas - Feed</title>
       </Helmet>
@@ -19,7 +18,7 @@ const Home = () => {
           <Articles />
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

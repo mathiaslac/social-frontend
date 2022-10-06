@@ -1,12 +1,12 @@
 import Skeleton from "react-loading-skeleton";
 import "../../components/posts/RegularPost/module.posts.css";
-import "../../Pages/Ladder/components/module.top.css";
+import "../../Pages/Ladder/components/css/module.top.css";
 import "../../Pages/Dashboard/Views/Sourcebans/module.dash-sb.css";
 
 const SkeletonSb = ({ cards }) => {
   return Array(cards)
     .fill(0)
-    .map((_, i) => (
+    .map((_) => (
       <tr
         initial={{
           opacity: 0,

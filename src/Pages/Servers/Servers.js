@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -20,7 +20,7 @@ const Servers = () => {
   const [awpServer, setAwpServer] = useState([]);
   const [AwpPlayer, setAwpPlayers] = useState([]);
 
-  const notify = () =>
+  const notify = () => {
     toast("Server address copied", {
       position: "top-center",
       icon: (
@@ -34,6 +34,7 @@ const Servers = () => {
       draggable: true,
       progress: undefined,
     });
+  };
 
   const getAwpServer = () => {
     axios.get("http://localhost:5000/api/servers/awp/info").then((response) => {

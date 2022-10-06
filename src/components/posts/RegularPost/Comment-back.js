@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import { db } from "../../../firebaseConfig";
 import { v4 as uuidv4 } from "uuid";
-import { toast } from "react-toastify";
 
 import { Context } from "../../../index";
 
@@ -25,21 +24,6 @@ const Comment = ({ id }) => {
     });
   }, []);
 
-  const commentAdded = () => {
-    toast("You have added a comment", {
-      position: "top-center",
-      icon: (
-        <img src="assets/img/svg/servers/success-alert.svg" alt="success" />
-      ),
-      autoClose: 2000,
-      closeButton: false,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
   const handleChangeComment = (e) => {
     if (e.key === "Enter") {
       updateDoc(commentRef, {
@@ -54,7 +38,6 @@ const Comment = ({ id }) => {
       }).then(() => {
         setComment("");
       });
-      commentAdded();
     }
   };
 
@@ -90,7 +73,6 @@ const Comment = ({ id }) => {
           comments.map(
             ({ commentId, userId, comment, userName, avatar, createdAt }) => (
               <div key={commentId} className="post_comment__ffAZa">
-                {createdAt}
                 <Link
                   to={`/profile/${userId}`}
                   className="post_commentAvatar__3J7-B"
@@ -131,7 +113,6 @@ const Comment = ({ id }) => {
                                 <div className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">
                                   <span>
                                     <span>{comment}</span>
-                                    <p>{createdAt}</p>
                                   </span>
                                 </div>
                               </div>
@@ -147,7 +128,11 @@ const Comment = ({ id }) => {
                         className="post_commentActionNotLike__2ZZ6l post_commentAction__3ryfa"
                         onClick={() =>
                           handleDeleteComment({
+                            commentId,
+                            user,
                             comment,
+                            userName,
+                            createdAt,
                           })
                         }
                       >
@@ -184,10 +169,7 @@ const Comment = ({ id }) => {
                   <input
                     type="text"
                     className="comment__imput public-DraftEditorPlaceholder-inner"
-                    style={{
-                      whiteSpace: "pre-wrap",
-                      width: "-webkit-fill-available",
-                    }}
+                    style={{ whiteSpace: "pre-wrap" }}
                     value={comment}
                     onChange={(e) => {
                       setComment(e.target.value);

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import "./Landing.css";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 // import usePing from "../../common/hooks/use-ping";
 

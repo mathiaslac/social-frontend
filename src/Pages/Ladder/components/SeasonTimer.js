@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./module.seasonTimer.css";
+import "./css/module.seasonTimer.css";
 import Clock from "./hooks/Clock";
 
 class SeasonTimer extends Component {

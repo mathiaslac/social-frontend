@@ -132,7 +132,7 @@
   height: 47px;
   border-radius: 10px;
   display: grid;
-  grid-template-columns: 1fr 15fr 15fr;
+  grid-template-columns: 4fr 15fr 15fr;
   padding: 0px 29px;
   margin-bottom: 2px;
 }
@@ -163,7 +163,7 @@
   font-size: 14px;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 15fr 15fr;
+  grid-template-columns: 4fr 15fr 15fr;
 }
 .top__table-premiums tr td {
   z-index: 1;
@@ -178,7 +178,7 @@
   height: 47px;
   border-radius: 10px;
   display: grid;
-  grid-template-columns: 0.8fr 6fr 6fr 6fr;
+  grid-template-columns: 2fr 6fr 6fr 6fr;
   padding: 0px 29px;
   margin-bottom: 2px;
 }
@@ -209,7 +209,7 @@
   font-size: 14px;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 0.8fr 6fr 6fr 6fr;
+  grid-template-columns: 2fr 6fr 6fr 6fr;
 }
 .top__table-admins tr td {
   z-index: 1;
@@ -224,7 +224,7 @@
   height: 47px;
   border-radius: 10px;
   display: grid;
-  grid-template-columns: 0.8fr 4fr 4fr 4fr 4fr;
+  grid-template-columns: 2fr 4fr 4fr 4fr 4fr;
   padding: 0px 29px;
   margin-bottom: 2px;
 }
@@ -255,7 +255,7 @@
   font-size: 14px;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 0.8fr 4fr 4fr 4fr 4fr;
+  grid-template-columns: 2fr 4fr 4fr 4fr 4fr;
 }
 .top__table-bans tr td {
   z-index: 1;

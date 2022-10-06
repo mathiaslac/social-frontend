@@ -21,7 +21,7 @@ const SearchBar = () => {
     if (text.length > 2) {
       matches = users.filter((user) => {
         const regex = new RegExp(`${text}`, "gi");
-        return user.playername.match(regex);
+        return user.name.match(regex);
       });
     }
     setSuggestions(matches);
@@ -45,11 +45,9 @@ const SearchBar = () => {
           {suggestions &&
             suggestions.slice(0, 9).map((suggestion, i) => (
               <div className="sugg__search" key={i}>
-                <Link to={`/profile/${steam64(suggestion.steamid)}`}>
+                <Link to={`/profile/${steam64(suggestion.auth)}`}>
                   <img src="" alt="user-avatar" width={20} height={20} />
-                  <div className="sugg__playername">
-                    {suggestion.playername}
-                  </div>
+                  <div className="sugg__playername">{suggestion.name}</div>
                 </Link>
               </div>
             ))}

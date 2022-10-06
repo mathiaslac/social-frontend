@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
 import "../../../../components/posts/RegularPost/module.posts.css";
-import "../../../Ladder/components/module.top.css";
+import "../../../Ladder/components/css/module.top.css";
 
 const Databases = () => {
   return (

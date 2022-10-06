@@ -11,7 +11,7 @@ import { API_URL } from "../../../util/consts";
 import jwtDecode from "jwt-decode";
 import Modal from "../../../components/posts/AddPost/Modal/Modal";
 import { Link, Outlet } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Justice from "../Sidebar/Justice";
 // import "./module.events.css";
 import "../module.dashboard.css";
@@ -378,7 +378,10 @@ const DashboardLayout = () => {
             <span>Premium</span>
           </Link>
         </div>
-        <div className="posts" style={{ flex: 1, padding: 0 }}>
+        <div
+          className="posts"
+          style={{ flex: 1, padding: 0, minWidth: 1220, maxWidth: 1220 }}
+        >
           <Outlet />
         </div>
       </div>
