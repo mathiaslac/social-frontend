@@ -1,7 +1,7 @@
 import "../../../layouts/Content/Feed/PremiumFeed/module.top-feed.css";
 import "../../../layouts/Content/Feed/PremiumFeed/module.modal-post.css";
 //import "./module.test-dropzone.css";
-import { Fragment, useState, useContext, useMemo, useCallback } from "react";
+import { Fragment, useState, useContext, useMemo } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage, db } from "../../../firebaseConfig";
@@ -19,7 +19,7 @@ import "../module.dashboard.css";
 const DashboardLayout = () => {
   const [showCreatePost, setShowCreatePost] = useState(false);
   const { user } = useContext(Context);
-  const [modal, setMState] = useState(false);
+  const [, setMState] = useState(false);
   const toastHandle = (error) => {
     toast.error(error, {
       position: toast.POSITION.BOTTOM_RIGHT,

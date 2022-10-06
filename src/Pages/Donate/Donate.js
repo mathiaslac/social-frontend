@@ -2,7 +2,6 @@ import { Fragment, useState, useContext, useMemo } from "react";
 import jwtDecode from "jwt-decode";
 import "./module.vip.css";
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
 import { API_URL } from "../../util/consts";
 import { toast } from "react-toastify";
 import { Context } from "../../index";
@@ -11,7 +10,7 @@ import Modal from "../../components/posts/AddPost/Modal/Modal";
 const Donate = () => {
   const [showDonate, setShowDonate] = useState(false);
   const { user } = useContext(Context);
-  const [modal, setMState] = useState(false);
+  const [, setMState] = useState(false);
   const toastHandle = (error) => {
     toast.error(error, {
       position: toast.POSITION.BOTTOM_RIGHT,

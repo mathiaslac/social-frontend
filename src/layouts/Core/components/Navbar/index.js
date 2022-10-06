@@ -37,11 +37,9 @@ window.onclick = function (event) {
   }
 };
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [credits, setCredits] = useState([]);
   const { user } = useContext(Context);
-
-  const getCredits = () => {};
 
   const [, setMState] = useState(false);
 
@@ -74,6 +72,16 @@ const Navbar = (props) => {
     }, 500);
   };
 
+  const getCredits = () => {
+    if (user.isAuth) {
+      axios
+        .get(`http://localhost:5000/api/shop/${user.user.steam_short}`)
+        .then((response) => {
+          const credits = response.data;
+          setCredits(credits);
+        });
+    }
+  };
   useMemo(() => {
     window.onmessage = (event) => {
       if (event.origin !== API_URL) return;

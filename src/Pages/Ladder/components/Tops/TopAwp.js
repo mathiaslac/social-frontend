@@ -47,9 +47,11 @@ const TopAwp = () => {
       });
   };
 
-  useEffect(() => getPlayers(), []);
-  useEffect(() => getCurrentPlayer(), []);
-  useEffect(() => getAvatar(), []);
+  useEffect(() => {
+    getPlayers();
+    getCurrentPlayer();
+    getAvatar();
+  }, []);
   return (
     <Fragment>
       <div className="header__table-top">

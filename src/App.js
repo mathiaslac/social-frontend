@@ -28,7 +28,7 @@ import {
 } from "./routes";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const { user } = useContext(Context);
   const [jwt, setJwt] = useLocalStorage("jwtToken");
 
