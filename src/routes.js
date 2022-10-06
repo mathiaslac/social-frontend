@@ -6,7 +6,6 @@ import {
   EVENTS_ROUTE,
   HOME_ROUTE,
   INDEX_ROUTE,
-  LEADBOARDS_ROUTE,
   SERVERS_ROUTE,
   PROFILE_ROUTE,
 } from "./util/consts";
