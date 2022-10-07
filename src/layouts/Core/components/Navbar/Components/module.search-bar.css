@@ -1,20 +1,15 @@
 .suggestions {
   display: flex;
   flex-direction: column;
-  /*
-  background: #1b1e29;
+  background: #232633;
   width: 292px;
-  transform: translateX(-11px);
-  margin-top: -10px;
-  padding: 35px 15px 25px 15px;
-  border-radius: 0px 0px 8px 8px;*/
+  transform: translateX(-18px);
+  margin-top: 17px;
+  border-radius: 8px;
 }
 .sugg__search {
-  background: #1b1e29;
   width: 292px;
-  transform: translateX(-11px);
-  margin-top: -10px;
-  padding: 15px;
+  padding: 5px 10px 0px 10px;
   border-radius: 0px 0px 8px 8px;
 }
 .searchBar__input {
@@ -25,4 +20,28 @@
 }
 .searchBar__input::placeholder {
   color: #81869b;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+.sugg__body {
+  padding-bottom: 10px;
+  border-radius: 8px;
+}
+.sugg__flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+.sugg__flex:hover {
+  background: #313544;
+  border-radius: 8px;
+}
+.sugg__flex > img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.sugg__playername {
+  color: #fff;
+  font-weight: 700;
 }

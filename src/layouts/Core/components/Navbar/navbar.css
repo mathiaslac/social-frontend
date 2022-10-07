@@ -632,10 +632,10 @@ input {
 }
 .ideas-select-single .ideas-select-selector .ideas-select-selection-search {
   position: absolute;
-  top: 0;
-  right: 11px;
+  top: 14px;
+  right: 5px;
   bottom: 0;
-  left: 11px;
+  left: 18px;
 }
 .ideas-select-single.ideas-select-lg:not(.ideas-select-customize-input):not(.ideas-select-customize-input)
   .ideas-select-selection-search-input {
