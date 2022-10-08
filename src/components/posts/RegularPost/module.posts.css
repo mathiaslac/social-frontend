@@ -348,7 +348,6 @@
 }
 .reaction-list_andOthers__2qOLA {
   color: #fff;
-  margin-left: 4px;
   cursor: pointer;
 }
 .post_textHeader__1u2hk {
@@ -668,4 +667,26 @@
 }
 .comment__imput::placeholder {
   color: #fff;
+}
+.delete__post {
+  color: #81869b;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.comments__count {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #81869b;
+  display: flex;
+  align-items: center;
+}
+.comments__count > img {
+  margin-right: 3px;
+}
+.comments__count > a {
+  color: #81869b;
 }

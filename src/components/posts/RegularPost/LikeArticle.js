@@ -26,8 +26,10 @@ const LikeArticle = ({ id, likes }) => {
   return (
     <>
       <img
-        src={`../assets/img/svg/feed/Like.svg${
-          !likes?.includes(user.user.steamid64) ? "" : ""
+        src={`${
+          !likes?.includes(user.user.steamid64)
+            ? "../assets/img/svg/feed/Like.svg"
+            : "../assets/img/svg/feed/BlueLike.svg"
         }`}
         style={{
           cursor: "pointer",

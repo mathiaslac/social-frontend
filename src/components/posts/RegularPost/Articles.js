@@ -97,27 +97,14 @@ const Articles = () => {
                       )}
                     </Link>
                   </div>
-                  <span
-                    className="post_topRight__3Ggmc"
-                    onClick={() => setShowDropPosts(true)}
-                  >
+                  <span className="post_topRight__3Ggmc">
                     <span>
-                      <img
-                        src="assets/img/svg/feed/Dots.svg"
-                        alt="tree-dots"
-                        className="ideas-dropdown-trigger post__optionsDots post_postOptionsDropdown__1tWIp"
-                      />
+                      {(user && user.user.steamid64 === userId) ||
+                        (user.user.group >= 3 && (
+                          <DeleteArticle id={id} imageUrl={imageUrl} />
+                        ))}
                     </span>
                   </span>
-                  <Modal
-                    onClose={() => setShowDropPosts(false)}
-                    id={id}
-                    show={showDropPosts}
-                  >
-                    {user && user.user.steamid64 === userId && (
-                      <DeleteArticle id={id} imageUrl={imageUrl} />
-                    )}
-                  </Modal>
                 </div>
                 <div className="post_textHeader__1u2hk">
                   <span className={"post_textUsername__F1OVV " + postColor}>
@@ -219,17 +206,23 @@ const Articles = () => {
                 <div className="post_interactionWrapper__3NGnR">
                   <div className="post_interactionButtons__1QW5O">
                     <span>
-                      {user && <LikeArticle id={id} likes={likes} />}
-                      {comments && comments.length > 0 && (
-                        <div className="pe-2">
-                          <p>{comments?.length} comments</p>
-                        </div>
+                      {user && (
+                        <LikeArticle
+                          className="post_interactionIcon__hNIqh"
+                          id={id}
+                          likes={likes}
+                        />
                       )}
-                      <img
-                        className="post_interactionIcon__hNIqh"
-                        src="assets/img/svg/feed/Share.svg"
-                        alt="share"
-                      />
+                      <Link
+                        to={`/post/${id}`}
+                        style={{ marginTop: -1, marginLeft: 7 }}
+                      >
+                        <img
+                          className="post_interactionIcon__hNIqh"
+                          src="assets/img/svg/feed/Comment.svg"
+                          alt="comment-svg"
+                        />
+                      </Link>
                     </span>
                   </div>
                   <div className="reaction-list_reactionListWrapper__2CiuZ">
@@ -237,6 +230,19 @@ const Articles = () => {
                       Liked by {likes?.length} people
                     </div>
                   </div>
+                  {comments && comments.length > 0 && (
+                    <div className="comments__count">
+                      <img
+                        src="assets/img/svg/feed/Comment.svg"
+                        alt="comment-svg"
+                        width={16}
+                        height={16}
+                      />
+                      <Link to={`/post/${id}`}>
+                        <p>View all {comments?.length} comments</p>
+                      </Link>
+                    </div>
+                  )}
                 </div>
                 {user.isAuth ? (
                   <div className="post_upload__1QPiP">

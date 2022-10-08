@@ -2,8 +2,9 @@ import { doc, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
-import LikeArticle from "./LikeArticle-back";
-import Comment from "./Comment-back";
+import LikeArticle from "./LikeArticle";
+import DeleteArticle from "./DeleteArticle";
+import Comment from "./Comment";
 import { motion } from "framer-motion";
 import SkeletonPost from "../../../Skeleton/Home/Skeleton-Post";
 import "./module.posts.css";
@@ -76,15 +77,6 @@ const Article = () => {
                     )}
                   </Link>
                 </div>
-                <span className="post_topRight__3Ggmc">
-                  <span>
-                    <img
-                      src="../assets/img/svg/feed/Dots.svg"
-                      alt="tree-dots"
-                      className="ideas-dropdown-trigger post__optionsDots post_postOptionsDropdown__1tWIp"
-                    />
-                  </span>
-                </span>
               </div>
               <div className="post_textHeader__1u2hk">
                 <span
@@ -161,18 +153,16 @@ const Article = () => {
                                         overflow: "hidden",
                                       }}
                                     >
-                                      <Link to={`/post/${id}`}>
-                                        <img
-                                          src={article.imageUrl}
-                                          alt="user-post"
-                                          style={{
-                                            position: "relative",
-                                            width: "100%",
-                                            objectFit: "contain",
-                                            zIndex: 15,
-                                          }}
-                                        />
-                                      </Link>
+                                      <img
+                                        src={article.imageUrl}
+                                        alt="user-post"
+                                        style={{
+                                          position: "relative",
+                                          width: "100%",
+                                          objectFit: "contain",
+                                          zIndex: 15,
+                                        }}
+                                      />
                                     </div>
                                   </div>
                                 </div>
@@ -188,13 +178,32 @@ const Article = () => {
               <div className="post_interactionWrapper__3NGnR">
                 <div className="post_interactionButtons__1QW5O">
                   <span>
-                    {user.isAuth && (
-                      <LikeArticle id={id} likes={article.likes} />
+                    {user && (
+                      <LikeArticle
+                        className="post_interactionIcon__hNIqh"
+                        id={id}
+                        likes={article.likes}
+                      />
                     )}
-                    <div className="reaction-list_andOthers__2qOLA">
-                      Liked by {article.likes.length} people
-                    </div>
+                    <Link
+                      to={`/post/${id}`}
+                      style={{ marginTop: -1, marginLeft: 7 }}
+                    >
+                      <img
+                        className="post_interactionIcon__hNIqh"
+                        src="../assets/img/svg/feed/Comment.svg"
+                        alt="comment-svg"
+                      />
+                    </Link>
                   </span>
+                </div>
+                <div
+                  className="reaction-list_reactionListWrapper__2CiuZ"
+                  style={{ marginBottom: 12 }}
+                >
+                  <div className="reaction-list_andOthers__2qOLA">
+                    Liked by {article.likes.length} people
+                  </div>
                 </div>
                 <Comment id={article.id} />
               </div>

@@ -3,29 +3,26 @@ import React from "react";
 import { db, storage } from "../../../firebaseConfig";
 import { toast } from "react-toastify";
 import { deleteObject, ref } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 const DeleteArticle = ({ id, imageUrl }) => {
+  const navigate = useNavigate();
   const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this article?")) {
-      try {
-        await deleteDoc(doc(db, "Articles", id));
-        toast("Article deleted successfully", { type: "success" });
-        const storageRef = ref(storage, imageUrl);
-        await deleteObject(storageRef);
-      } catch (error) {
-        toast("Error deleting article", { type: "error" });
-        console.log(error);
-      }
+    try {
+      await deleteDoc(doc(db, "Articles", id));
+      toast("Article deleted successfully", { type: "success" });
+      const storageRef = ref(storage, imageUrl);
+      await deleteObject(storageRef);
+      navigate("/home", { replace: true });
+    } catch (error) {
+      toast("Error deleting article", { type: "error" });
+      console.log(error);
     }
   };
   return (
-    <div>
-      <i
-        className="fa fa-times"
-        onClick={handleDelete}
-        style={{ cursor: "pointer" }}
-      />
-    </div>
+    <span className="delete__post" onClick={handleDelete}>
+      Delete
+    </span>
   );
 };
 

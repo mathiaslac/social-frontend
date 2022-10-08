@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import { db } from "../../../firebaseConfig";
 import { v4 as uuidv4 } from "uuid";
-import { toast } from "react-toastify";
 
 import { Context } from "../../../index";
 
@@ -24,22 +23,6 @@ const Comment = ({ id }) => {
       setComments(snapshot.data().comments);
     });
   }, []);
-
-  const commentAdded = () => {
-    toast("You have added a comment", {
-      position: "top-center",
-      icon: (
-        <img src="assets/img/svg/servers/success-alert.svg" alt="success" />
-      ),
-      autoClose: 2000,
-      closeButton: false,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
   const handleChangeComment = (e) => {
     if (e.key === "Enter") {
       updateDoc(commentRef, {
@@ -54,7 +37,6 @@ const Comment = ({ id }) => {
       }).then(() => {
         setComment("");
       });
-      commentAdded();
     }
   };
 
@@ -73,24 +55,11 @@ const Comment = ({ id }) => {
   };
   return (
     <>
-      {comments && comments.length > 0 && (
-        <div className="post_viewAllComments__1wTns">
-          <img
-            height={16}
-            width={16}
-            src="../assets/img/svg/feed/Comment.svg"
-            alt="comment-svg"
-            style={{ marginRight: 4 }}
-          />
-          <p> View all {comments?.length} comments</p>
-        </div>
-      )}
       <div style={{ display: "flex", flexDirection: "column-reverse" }}>
         {comments !== null &&
           comments.map(
             ({ commentId, userId, comment, userName, avatar, createdAt }) => (
               <div key={commentId} className="post_comment__ffAZa">
-                {createdAt}
                 <Link
                   to={`/profile/${userId}`}
                   className="post_commentAvatar__3J7-B"
@@ -131,7 +100,6 @@ const Comment = ({ id }) => {
                                 <div className="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">
                                   <span>
                                     <span>{comment}</span>
-                                    <p>{createdAt}</p>
                                   </span>
                                 </div>
                               </div>
