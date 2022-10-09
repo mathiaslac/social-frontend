@@ -9,6 +9,7 @@ import SteamID from "steamid";
 
 const TopAwp = () => {
   const [players, setPlayers] = useState([]);
+  const [, setJson] = useState([]);
   const { user } = useContext(Context);
   const [currentPlayer, setCurrentPlayer] = useState([]);
   const [avatar, setAvatar] = useState([]);
@@ -21,6 +22,7 @@ const TopAwp = () => {
         setPlayers(players);
       });
   };
+
   const getCurrentPlayer = () => {
     if (user.isAuth) {
       axios
@@ -33,24 +35,38 @@ const TopAwp = () => {
         });
     }
   };
+  const json = async () => {
+    const users = await axios.get(
+      "http://localhost:5000/api/servers/awp/ranks"
+    );
+    return Object.values(users.data);
+  };
+
   const steam64 = (steam) => {
     let steamclass = new SteamID(steam);
     return steamclass.getSteamID64();
   };
 
-  const getAvatar = () => {
-    axios
-      .get(`http://localhost:5000/api/avatar/${steam64("STEAM_0:0:546942335")}`)
-      .then((response) => {
-        const avatar = response.data;
-        setAvatar(avatar);
-      });
-  };
+  let joined = "";
+  json().then((result) => {
+    const names = result.map((item) => {
+      return steam64(item["steam"]);
+    });
 
+    joined = names.join(",");
+  });
+
+  console.log(joined);
+  const getAvatar = async () => {
+    const data = await axios.get(
+      `http://localhost:5000/api/avatar?steamIDS=${joined}`
+    );
+    console.log(data);
+  };
+  // getAvatar();
   useEffect(() => {
     getPlayers();
     getCurrentPlayer();
-    getAvatar();
   }, []);
   return (
     <Fragment>
@@ -148,7 +164,7 @@ const TopAwp = () => {
                   </td>
                   <td className="user-fix">
                     <Link to={`/profile/${steam64(player.steam)}`}>
-                      <img src={avatar} alt="player-img" />
+                      <img src="" alt="player-img" />
                       <span className="limited-length">{player.name}</span>
                     </Link>
                   </td>
