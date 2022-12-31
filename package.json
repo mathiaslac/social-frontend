@@ -62,7 +62,7 @@
     "workbox-streams": "^6.5.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_API_FIREBASE_KEY=AIzaSyB9OrVv6uckxnTfWvjLQuBpdu6emnBj7xs REACT_APP_FIREBASE_API_DOMAIN=ideas-26aa9.firebaseapp.com REACT_APP_FIREBASE_PROJECT_ID=ideas-26aa9 REACT_APP_FIREBASE_STORAGE_BUCKET=ideas-26aa9.appspot.com REACT_APP_FIREBASE_MESSAGING_SENDER_ID=705614794428 REACT_APP_FIREBASE_APP_ID=1:705614794428:web:fe66554a74145d3be14ab9 REACT_APP_STEAM_API_KEY=580D83F70BA4F7FDD1007607561AFDFB react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
